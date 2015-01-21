@@ -26,18 +26,41 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+                'brandLabel' => 'Главная',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
             echo Nav::widget([
-                'options' => ['class' => 'navbar-nav navbar-right'],
+                'options' => ['class' => 'navbar-nav navbar-left'],
                 'items' => [
-                    ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'About', 'url' => ['/site/about']],
-                    ['label' => 'Contact', 'url' => ['/site/contact']],
+                    ['label' => 'Добавить', 'items' => [
+                        ['label' => 'Конфигурацию', 'url' => ['/crud-job-result/index']],
+                        ['label' => 'Сотрудника', 'url' => ['/crud-job/index']],
+                        ['label' => 'Подразделение', 'url' => ['/crud-job/index']],
+                        ['label' => 'Принтер', 'url' => ['/crud-job/index']],
+                        ['label' => 'Монитор', 'url' => ['/crud-job/index']],
+                        ['label' => 'Системный блок', 'url' => ['/crud-job/index']],
+                        ['label' => 'Другое оборудование', 'url' => ['/crud-job/index']],
+                    ]],
+                    ['label' => 'Вид', 'items' => [
+                        ['label' => 'Сотрудники', 'url' => ['/crud-job-result/index']],
+                        ['label' => 'По подразделениям', 'url' => ['/crud-job-result/index']],
+                    ]],
+                    ['label' => 'Инструменты', 'items' => [
+                        ['label' => 'Планирование', 'url' => ['/crud-job-result/index']],
+                        ['label' => 'Просмотр пермещений ПК', 'url' => ['/crud-job-result/index']],
+                    ]],
+                    ['label' => 'Печать', 'items' => [
+                        ['label' => 'Реестр сдачи', 'url' => ['/crud-job-result/index']],
+                        ['label' => 'Акт на списание', 'url' => ['/crud-job-result/index']],
+                        ['label' => 'Расходная наклодная', 'url' => ['/crud-job-result/index']],
+                        ['label' => 'Отчет обеспеченности ПК', 'url' => ['/crud-job-result/index']],
+                        ['label' => 'Отчет по сотруднику', 'url' => ['/crud-job-result/index']],
+                        ['label' => 'Карточка сотрудника', 'url' => ['/crud-job-result/index']],
+                        ['label' => 'QRcode сотрудника', 'url' => ['/crud-job-result/index']],
+                    ]],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
                         ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
@@ -54,7 +77,7 @@ AppAsset::register($this);
             ]) ?>
             <?= $content ?>
         </div>
-    </div>
+    </div> 
 
     <footer class="footer">
         <div class="container">

@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use app\models\EntryForm;
-use app\models\EntryFormF;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
