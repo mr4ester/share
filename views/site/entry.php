@@ -13,4 +13,3 @@ use \yii\bootstrap\DatePicker;
     </div>
 
 <?php ActiveForm::end(); ?>
-<?= DatePicker::widget(['name' => 'date']) ?>

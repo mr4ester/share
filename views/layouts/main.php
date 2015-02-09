@@ -36,7 +36,7 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-left'],
                 'items' => [
                     ['label' => 'Добавить', 'items' => [
-                        ['label' => 'Конфигурацию', 'url' => ['/crud-job-result/index']],
+                        ['label' => 'Конфигурацию', 'url' => ['/upload/upload']],
                         ['label' => 'Сотрудника', 'url' => ['/crud-job/index']],
                         ['label' => 'Подразделение', 'url' => ['/crud-job/index']],
                         ['label' => 'Принтер', 'url' => ['/crud-job/index']],
