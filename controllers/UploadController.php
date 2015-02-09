@@ -138,65 +138,65 @@ class UploadController extends Controller
         $session = new Session();
         $session->open();
         $model = new ValidateForm();
-        $configuration = new Configuration();
+        $saveConf = new Configuration();
 
-//        $configuration = Configuration::find()
+//        $saveConf = Configuration::find()
 //            ->indexBy('cpu')
 //            ->one();
 
         if (Yii::$app->request->post('ValidateForm')) {
             $array = Yii::$app->request->post('ValidateForm');
-            $configuration->invent_num_system = $array['inv_syst'];
-            $configuration->invent_num_monitor 	 = $array['inv_mon'];
-            $configuration->invent_num_printer = $array['invent_print'];
-            $configuration->cpu = $array['cpu'];
-            $configuration->motherboard = $array['motherboard'];
-            $configuration->graphics = $array['gpu'];
-            $configuration->memory_1 = $array['mem1'];
+            $saveConf->invent_num_system = $array['inv_syst'];
+            $saveConf->invent_num_monitor 	 = $array['inv_mon'];
+            $saveConf->invent_num_printer = $array['invent_print'];
+            $saveConf->cpu = $array['cpu'];
+            $saveConf->motherboard = $array['motherboard'];
+            $saveConf->graphics = $array['gpu'];
+            $saveConf->memory_1 = $array['mem1'];
             if (isset($array['mem2'])) {
-                $configuration->memory_2 = $array['mem2'];
+                $saveConf->memory_2 = $array['mem2'];
             }
             if (isset($array['mem3'])) {
-                $configuration->memory_3 = $array['mem3'];
+                $saveConf->memory_3 = $array['mem3'];
             }
             if (isset($array['mem4'])) {
-                $configuration->memory_4 = $array['mem4'];
+                $saveConf->memory_4 = $array['mem4'];
             }
-            $configuration->monitor_1 = $array['monitor'];
+            $saveConf->monitor_1 = $array['monitor'];
             if (isset($array['monitor2'])) {
-                $configuration->monitor_2 = $array['monitor2'];
+                $saveConf->monitor_2 = $array['monitor2'];
             }
-            $configuration->hdd_1 = $array['hdd1'];
-            $configuration->hdd_2 = $array['hdd2'];
-            $configuration->print_1 = $array['printer1'];
+            $saveConf->hdd_1 = $array['hdd1'];
+            $saveConf->hdd_2 = $array['hdd2'];
+            $saveConf->print_1 = $array['printer1'];
             if (isset($array['printer2'])) {
-                $configuration->print_2 = $array['printer2'];
+                $saveConf->print_2 = $array['printer2'];
             }
             if (isset($array['printer3'])) {
-                $configuration->print_3 = $array['printer3'];
+                $saveConf->print_3 = $array['printer3'];
             }
             if (isset($array['printer4'])) {
-                $configuration->print_4 = $array['printer4'];
+                $saveConf->print_4 = $array['printer4'];
             }
             if (isset($array['printer5'])) {
-                $configuration->print_5 = $array['printer5'];
+                $saveConf->print_5 = $array['printer5'];
             }
             if (isset($array['printer6'])) {
-                $configuration->print_6 = $array['printer6'];
+                $saveConf->print_6 = $array['printer6'];
             }
             if (isset($array['printer7'])) {
-                $configuration->print_7 = $array['printer7'];
+                $saveConf->print_7 = $array['printer7'];
             }
             if (isset($array['printer8'])) {
-                $configuration->print_8 = $array['printer8'];
+                $saveConf->print_8 = $array['printer8'];
             }
             if (isset($array['printer9'])) {
-                $configuration->print_9 = $array['printer9'];
+                $saveConf->print_9 = $array['printer9'];
             }
             if (isset($array['printer10'])) {
-            $configuration->print_10 = $array['printer10'];
+            $saveConf->print_10 = $array['printer10'];
              }
-            $configuration->save();
+            $saveConf->save();
         }
 
 

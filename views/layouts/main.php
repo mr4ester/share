@@ -36,9 +36,9 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-left'],
                 'items' => [
                     ['label' => 'Добавить', 'items' => [
+                        ['label' => 'Подразделение', 'url' => ['/add/department']],
+                        ['label' => 'Сотрудника', 'url' => ['/add/staff']],
                         ['label' => 'Конфигурацию', 'url' => ['/upload/upload']],
-                        ['label' => 'Сотрудника', 'url' => ['/crud-job/index']],
-                        ['label' => 'Подразделение', 'url' => ['/crud-job/index']],
                         ['label' => 'Принтер', 'url' => ['/crud-job/index']],
                         ['label' => 'Монитор', 'url' => ['/crud-job/index']],
                         ['label' => 'Системный блок', 'url' => ['/crud-job/index']],
