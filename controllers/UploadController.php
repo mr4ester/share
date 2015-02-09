@@ -146,6 +146,9 @@ class UploadController extends Controller
 
         if (Yii::$app->request->post('ValidateForm')) {
             $array = Yii::$app->request->post('ValidateForm');
+            $configuration->invent_num_system = $array['inv_syst'];
+            $configuration->invent_num_monitor 	 = $array['inv_mon'];
+            $configuration->invent_num_printer = $array['invent_print'];
             $configuration->cpu = $array['cpu'];
             $configuration->motherboard = $array['motherboard'];
             $configuration->graphics = $array['gpu'];

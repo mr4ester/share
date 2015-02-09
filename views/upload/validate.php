@@ -29,6 +29,9 @@ use yii\bootstrap\Alert;
             array('1' => '1', 2 => '2', 3 => 3, 4 => 4, 5 => 5),
             array('prompt' => '', 'size' => 1)
         )->label('Список сотрудников'); ?>
+        <?= $form->field($model, 'inv_mon')->textInput(['maxlength' => 64])->label('инв№ монитора') ?>
+        <?= $form->field($model, 'inv_syst')->textInput(['maxlength' => 64])->label('инв№ сист. блока') ?>
+        <?= $form->field($model, 'invent_print')->textInput(['maxlength' => 64])->label('инв№ принтера') ?>
         <?= $form->field($model, 'cpu')->textInput(['maxlength' => 64, 'value' => Html::encode($config['тип цп'])])->label('CPU') ?>
         <?= $form->field($model, 'motherboard')->textInput(['maxlength' => 64, 'value' => Html::encode($config['системная плата'])])->label('Motherboard') ?>
         <?= $form->field($model, 'gpu')->textInput(['maxlength' => 64, 'value' => Html::encode($config['видеоадаптер1'])])->label('GPU') ?>

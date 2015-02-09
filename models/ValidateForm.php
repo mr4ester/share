@@ -7,6 +7,9 @@ use yii\db\ActiveRecord;
 
 class ValidateForm extends Model
 {
+    public $inv_mon;
+    public $inv_syst;
+    public $invent_print;
     public $staff;
     public $cpu;
     public $gpu;
