@@ -17,49 +17,48 @@ class UploadController extends Controller
     public $data;
 
 
-
     public function actionUpload()
     {
-         $array = array(
-        'тип цп' => '',
-        'системная плата' => '',
-        'видеоадаптер1' => '',
-        'монитор1' => '',
-        'монитор2' => '',
-        'дисковый накопитель1' => '',
-        'дисковый накопитель2' => '',
-        'дисковый накопитель3' => '',
-        'дисковый накопитель4' => '',
-        'дисковый накопитель5' => '',
-        'первичный адрес mac' => '',
-        'принтер1' => '',
-        'принтер2' => '',
-        'принтер3' => '',
-        'принтер4' => '',
-        'принтер5' => '',
-        'принтер6' => '',
-        'принтер7' => '',
-        'принтер8' => '',
-        'принтер9' => '',
-        'принтер10' => '',
-    );
-         $mem = array(
-        'имя модуля' => array(
-            'модуль1' => '',
-            'модуль2' => '',
-            'модуль3' => '',
-            'модуль4' => ''),
-        'размер модуля' => array(
-            'модуль1' => '',
-            'модуль2' => '',
-            'модуль3' => '',
-            'модуль4' => ''),
-        'скорость памяти' => array(
-            'модуль1' => '',
-            'модуль2' => '',
-            'модуль3' => '',
-            'модуль4' => ''),
-    );
+        $array = array(
+            'тип цп' => '',
+            'системная плата' => '',
+            'видеоадаптер1' => '',
+            'монитор1' => '',
+            'монитор2' => '',
+            'дисковый накопитель1' => '',
+            'дисковый накопитель2' => '',
+            'дисковый накопитель3' => '',
+            'дисковый накопитель4' => '',
+            'дисковый накопитель5' => '',
+            'первичный адрес mac' => '',
+            'принтер1' => '',
+            'принтер2' => '',
+            'принтер3' => '',
+            'принтер4' => '',
+            'принтер5' => '',
+            'принтер6' => '',
+            'принтер7' => '',
+            'принтер8' => '',
+            'принтер9' => '',
+            'принтер10' => '',
+        );
+        $mem = array(
+            'имя модуля' => array(
+                'модуль1' => '',
+                'модуль2' => '',
+                'модуль3' => '',
+                'модуль4' => ''),
+            'размер модуля' => array(
+                'модуль1' => '',
+                'модуль2' => '',
+                'модуль3' => '',
+                'модуль4' => ''),
+            'скорость памяти' => array(
+                'модуль1' => '',
+                'модуль2' => '',
+                'модуль3' => '',
+                'модуль4' => ''),
+        );
         $model = new UploadForm();
         $session = new Session();
 
@@ -118,17 +117,14 @@ class UploadController extends Controller
 
                 }
                 $session->open();
-                $session['config']=$array;
+                $session['config'] = $array;
+                $session['memory'] = $mem;
 
-                return $this->redirect(\Yii::$app->urlManager->createUrl('upload/validate'),302);
+
+
+                return $this->redirect(\Yii::$app->urlManager->createUrl('upload/validate'), 302);
             }
         }
-//        $configuration = new Configuration();
-//        $configuration->cpu = 'LGA sdgsdfgdsa';
-//        $configuration->save();
-//        $configuration = Configuration::find()
-//            ->indexBy('cpu')
-//            ->one();
 
 
         return $this->render('upload', [
@@ -137,21 +133,79 @@ class UploadController extends Controller
 
     }
 
-    public function actionValidate(){
+    public function actionValidate()
+    {
         $session = new Session();
         $session->open();
-
-//   $model = new EntryForm;
         $model = new ValidateForm();
-        echo'<br><br><br><br><br><br>';
-        echo \Yii::$app->request->post('cpu');
+        $configuration = new Configuration();
+
+//        $configuration = Configuration::find()
+//            ->indexBy('cpu')
+//            ->one();
+
+        if (Yii::$app->request->post('ValidateForm')) {
+            $array = Yii::$app->request->post('ValidateForm');
+            $configuration->cpu = $array['cpu'];
+            $configuration->motherboard = $array['motherboard'];
+            $configuration->graphics = $array['gpu'];
+            $configuration->memory_1 = $array['mem1'];
+            if (isset($array['mem2'])) {
+                $configuration->memory_2 = $array['mem2'];
+            }
+            if (isset($array['mem3'])) {
+                $configuration->memory_3 = $array['mem3'];
+            }
+            if (isset($array['mem4'])) {
+                $configuration->memory_4 = $array['mem4'];
+            }
+            $configuration->monitor_1 = $array['monitor'];
+            if (isset($array['monitor2'])) {
+                $configuration->monitor_2 = $array['monitor2'];
+            }
+            $configuration->hdd_1 = $array['hdd1'];
+            $configuration->hdd_2 = $array['hdd2'];
+            $configuration->print_1 = $array['printer1'];
+            if (isset($array['printer2'])) {
+                $configuration->print_2 = $array['printer2'];
+            }
+            if (isset($array['printer3'])) {
+                $configuration->print_3 = $array['printer3'];
+            }
+            if (isset($array['printer4'])) {
+                $configuration->print_4 = $array['printer4'];
+            }
+            if (isset($array['printer5'])) {
+                $configuration->print_5 = $array['printer5'];
+            }
+            if (isset($array['printer6'])) {
+                $configuration->print_6 = $array['printer6'];
+            }
+            if (isset($array['printer7'])) {
+                $configuration->print_7 = $array['printer7'];
+            }
+            if (isset($array['printer8'])) {
+                $configuration->print_8 = $array['printer8'];
+            }
+            if (isset($array['printer9'])) {
+                $configuration->print_9 = $array['printer9'];
+            }
+            if (isset($array['printer10'])) {
+            $configuration->print_10 = $array['printer10'];
+             }
+            $configuration->save();
+        }
 
 
         if ($model->validate()) {
-            return $this->render('validate',['model'=>$model, 'message'=>$message]);
+            return $this->render('validate', ['model' => $model, 'message' => $message]);
         }
 
-        return $this->render('validate', ['model' => $model, 'config'=> $session['config']]);
+        return $this->render('validate', [
+            'model' => $model,
+            'config' => $session['config'],
+            'memory'=> $session['memory']
+        ]);
 
     }
 }

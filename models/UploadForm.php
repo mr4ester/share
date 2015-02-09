@@ -25,7 +25,5 @@ class UploadForm extends Model
         ];
     }
 }
-class Configuration extends ActiveRecord{
 
-}
 
