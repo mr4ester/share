@@ -8,6 +8,7 @@ use app\models\AddStaff;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
+use yii\helpers\ArrayHelper;
 
 class AddController extends Controller
 {
@@ -19,15 +20,17 @@ class AddController extends Controller
 
         if(Yii::$app->request->post('AddDepartment')){
             $array = Yii::$app->request->post('AddDepartment');
-            echo '<br><br><br><br><br>';
-            print_r(Yii::$app->request->post('AddDepartment')['department']);
             $saveDepartment->department= $array['department'];
+            $saveDepartment->save();
 
         }
+        $deport = Department::find()->all();
+        $listData = ArrayHelper::map($deport,'id_department', 'department' );
 
 
         return $this->render('add-department' ,[
-        'model'=> $model
+        'model'=> $model,
+            'listData'=> $listData
         ]);
 
     }
@@ -36,14 +39,25 @@ class AddController extends Controller
     {
         $model = new AddStaff();
         $saveStaff = new Staff();
-        if(Yii::$app->request->post('AddDepartment')) {
-            $array = Yii::$app->request->post('AddDepartment');
+
+        if(Yii::$app->request->post('AddStaff')) {
+            $array = Yii::$app->request->post('AddStaff');
+            $saveStaff->id_department= $array['list'];
             $saveStaff->name = $array['name'];
             $saveStaff->surname = $array['surname'];
             $saveStaff->patronymic = $array['patronymic'];
+            $saveStaff->fio = $array['surname'].' '.$array['name']. ' ' .$array['patronymic'];
+            $saveStaff->save();
+
+
+
+
         }
+        $deport = Department::find()->all();
+        $listData = ArrayHelper::map($deport,'id_department', 'department' );
         return $this->render('add-staff' ,[
-            'model'=> $model
+            'model'=> $model,
+            'listData'=> $listData
         ]);
     }
 

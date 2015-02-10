@@ -26,7 +26,7 @@ use yii\bootstrap\Alert;
             ],
         ]); ?>
         <?= $form->field($model, 'staff')->listBox(
-            array('1' => '1', 2 => '2', 3 => 3, 4 => 4, 5 => 5),
+            $listData,
             array('prompt' => '', 'size' => 1)
         )->label('Список сотрудников'); ?>
         <?= $form->field($model, 'inv_mon')->textInput(['maxlength' => 64])->label('инв№ монитора') ?>

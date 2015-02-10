@@ -7,9 +7,11 @@ use Yii;
 use yii\web\Controller;
 use app\models\UploadForm;
 use app\models\Configuration;
+use app\models\Staff;
 use yii\web\UploadedFile;
 use yii\web\Session;
 use yii\web\Response;
+use yii\helpers\ArrayHelper;
 
 
 class UploadController extends Controller
@@ -140,11 +142,12 @@ class UploadController extends Controller
         $model = new ValidateForm();
         $saveConf = new Configuration();
 
-//        $saveConf = Configuration::find()
-//            ->indexBy('cpu')
-//            ->one();
 
-        if (Yii::$app->request->post('ValidateForm')) {
+        $staff = Staff::find()->all();
+        $listData = ArrayHelper::map($staff,'id_staff', 'fio' );// выбирает из масиива ключ-значение
+
+
+        if (Yii::$app->request->post('ValidateForm')) { // если была отправленна форма
             $array = Yii::$app->request->post('ValidateForm');
             $saveConf->invent_num_system = $array['inv_syst'];
             $saveConf->invent_num_monitor 	 = $array['inv_mon'];
@@ -196,7 +199,12 @@ class UploadController extends Controller
             if (isset($array['printer10'])) {
             $saveConf->print_10 = $array['printer10'];
              }
-            $saveConf->save();
+            $saveConf->save(); //сохраняем конфигурацию
+            $key = $saveConf->getPrimaryKey(); //получаем последний id конфигурации
+            $updateStaff = Staff::findOne($array['staff']); // делаем запрос к таблице сотрудники, с id выбранным в форме
+            $updateStaff->id_configuration = $key;// добавляем id конфигурации к выбранному сотруднику
+            $updateStaff->update(); // и обновляем запись в базе данных
+
         }
 
 
@@ -207,7 +215,8 @@ class UploadController extends Controller
         return $this->render('validate', [
             'model' => $model,
             'config' => $session['config'],
-            'memory'=> $session['memory']
+            'memory'=> $session['memory'],
+            'listData'=> $listData
         ]);
 
     }
