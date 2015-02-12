@@ -20,9 +20,4 @@ class AddStaff extends Model{
     }
 
 }
-class Staff extends ActiveRecord{
 
-}
-class Department extends ActiveRecord{
-
-}

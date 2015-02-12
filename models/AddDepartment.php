@@ -15,6 +15,3 @@ class AddDepartment extends Model{
     }
 
 }
-class Department extends ActiveRecord{
-
-}
