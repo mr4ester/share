@@ -17,8 +17,8 @@ class GetStaff extends Widget
 
     public function init()
     {
-        parent::init(); 
-        $model = new Staff();
+        parent::init();
+        $model = new Staff(); 
         $this->department = Department::find()->asArray()->all();
         //$listData = ArrayHelper::map($this->staff,'id_staff', 'fio' );
         $this->listData .= '<div onclick="tree_toggle(arguments[0])">';
