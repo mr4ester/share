@@ -12,6 +12,7 @@ use app\models\ContactForm;
 use app\models\UploadForm;
 use yii\web\UploadedFile;
 
+
 class SiteController extends Controller
 {
     public function behaviors()
@@ -52,6 +53,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+
         return $this->render('index');
     }
 

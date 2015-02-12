@@ -5,11 +5,6 @@ use yii\bootstrap\Alert;
 
 ?>
 
-<div class="row">
-    <div class="col-md-2">
-
-    </div>
-    <div class="col-md-10">
         <?php $form = ActiveForm::begin([
             'id' => 'config-form',
             'layout' => 'horizontal',
@@ -43,5 +38,3 @@ use yii\bootstrap\Alert;
 
         <?php ActiveForm::end(); ?>
 
-    </div>
-</div>

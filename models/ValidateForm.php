@@ -40,6 +40,3 @@ class ValidateForm extends Model
 class Configuration extends ActiveRecord{
 
 }
-class Staff extends ActiveRecord{
-
-}

@@ -17,7 +17,7 @@ class GetStaff extends Widget
 
     public function init()
     {
-        parent::init();
+        parent::init(); 
         $model = new Staff();
         $this->department = Department::find()->asArray()->all();
         //$listData = ArrayHelper::map($this->staff,'id_staff', 'fio' );

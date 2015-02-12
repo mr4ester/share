@@ -5,11 +5,7 @@ use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Alert;
 
 ?>
-<div class="row">
-    <div class="col-md-2">
 
-    </div>
-    <div class="col-md-10">
         <?php $form = ActiveForm::begin([
             'id' => 'config-form',
             'layout' => 'horizontal',
@@ -27,7 +23,7 @@ use yii\bootstrap\Alert;
         ]); ?>
         <?= $form->field($model, 'staff')->listBox(
             $listData,
-            array('prompt' => '', 'size' => 1)
+            array('prompt' => '', 'size' => 1 )
         )->label('Список сотрудников'); ?>
         <?= $form->field($model, 'inv_mon')->textInput(['maxlength' => 64])->label('инв№ монитора') ?>
         <?= $form->field($model, 'inv_syst')->textInput(['maxlength' => 64])->label('инв№ сист. блока') ?>
@@ -68,5 +64,3 @@ use yii\bootstrap\Alert;
 
         <?php ActiveForm::end(); ?>
 
-    </div>
-</div>
