@@ -18,7 +18,7 @@ class GetStaff extends Widget
     public function init()
     {
         parent::init();
-        $model = new Staff(); 
+        $model = new Staff();
         $this->department = Department::find()->asArray()->all();
         //$listData = ArrayHelper::map($this->staff,'id_staff', 'fio' );
         $this->listData .= '<div onclick="tree_toggle(arguments[0])">';
@@ -34,8 +34,9 @@ class GetStaff extends Widget
                 $this->listData .= '<ul class="Container-tree">
                                 <li class="Node ExpandLeaf IsLast">
                                 <div class="Expand"></div>
-                                <div class="Content">' . $value['fio'] .
-                    '</div></li></ul>';
+                                <div class="Content">
+                                 <a  href="' . \Yii::$app->urlManager->createUrl(['configuration/view' , 'id'=>$value['id_configuration']]) . '" >' . $value['fio'] .
+                                 '</a></div></li></ul>';
 
             }
             $this->listData .= '</li></ul>';

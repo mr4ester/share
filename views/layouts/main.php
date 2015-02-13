@@ -47,8 +47,8 @@ AppAsset::register($this);
                 ['label' => 'Другое оборудование', 'url' => ['/crud-job/index']],
             ]],
             ['label' => 'Вид', 'items' => [
-                ['label' => 'Сотрудники', 'url' => ['/crud-job-result/index']],
-                ['label' => 'По подразделениям', 'url' => ['/crud-job-result/index']],
+                ['label' => 'Сотрудники', 'url' => ['/staff/index']],
+                ['label' => 'Все конфигурации', 'url' => ['/configuration/index']],
             ]],
             ['label' => 'Инструменты', 'items' => [
                 ['label' => 'Планирование', 'url' => ['/crud-job-result/index']],
@@ -78,13 +78,13 @@ AppAsset::register($this);
             <div class="col-md-2 ">
                 <div class="left-staff">
                     <br><br>
-                    <h3>Сотрудники</h3>
+                    <h3 class="text-center">Сотрудники</h3>
 
                 <?=GetStaff::widget()?>
 
                 </div>
             </div>
-            <div class="col-md-10">
+            <dv class="col-md-10">
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>

@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Country;
+use app\models\Staff;
 
 /**
- * CountrySearch represents the model behind the search form about `app\models\Country`.
+ * SearchStaff represents the model behind the search form about `app\models\Staff`.
  */
-class CountrySearch extends Country
+class SearchStaff extends Staff
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class CountrySearch extends Country
     public function rules()
     {
         return [
-            [['code', 'name'], 'safe'],
-            [['population'], 'integer'],
+            [['id_staff', 'id_department', 'id_configuration'], 'integer'],
+            [['name', 'patronymic', 'surname', 'fio'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class CountrySearch extends Country
      */
     public function search($params)
     {
-        $query = Country::find();
+        $query = Staff::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,11 +56,15 @@ class CountrySearch extends Country
         }
 
         $query->andFilterWhere([
-            'population' => $this->population,
+            'id_staff' => $this->id_staff,
+            'id_department' => $this->id_department,
+            'id_configuration' => $this->id_configuration,
         ]);
 
-        $query->andFilterWhere(['like', 'code', $this->code])
-            ->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'patronymic', $this->patronymic])
+            ->andFilterWhere(['like', 'surname', $this->surname])
+            ->andFilterWhere(['like', 'fio', $this->fio]);
 
         return $dataProvider;
     }

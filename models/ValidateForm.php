@@ -37,6 +37,3 @@ class ValidateForm extends Model
         ];
     }
 }
-class Configuration extends ActiveRecord{
-
-}

@@ -155,6 +155,7 @@ class UploadController extends Controller
             $saveConf->cpu = $array['cpu'];
             $saveConf->motherboard = $array['motherboard'];
             $saveConf->graphics = $array['gpu'];
+            $saveConf->mac = $array['mac'];
             $saveConf->memory_1 = $array['mem1'];
             if (isset($array['mem2'])) {
                 $saveConf->memory_2 = $array['mem2'];
