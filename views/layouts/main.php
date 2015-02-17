@@ -1,4 +1,5 @@
 <?php
+use alexgx\phpexcel;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -81,6 +82,8 @@ AppAsset::register($this);
                     <h3 class="text-center">Сотрудники</h3>
 
                 <?=GetStaff::widget()?>
+
+
 
                 </div>
             </div>

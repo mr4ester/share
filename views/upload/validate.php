@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 //use yii\widgets\ActiveForm;
 use yii\bootstrap\ActiveForm;
+use yii\jui\DatePicker;
 use yii\bootstrap\Alert;
 
 ?>
@@ -25,6 +26,7 @@ use yii\bootstrap\Alert;
             $listData,
             array('prompt' => '', 'size' => 1 )
         )->label('Список сотрудников'); ?>
+        <?= $form->field($model,'date')->widget(DatePicker::className(),['language'=>'ru','dateFormat' => 'dd-MM-yyyy',])->label('Дата поступления') ?>
         <?= $form->field($model, 'inv_mon')->textInput(['maxlength' => 64])->label('инв№ монитора') ?>
         <?= $form->field($model, 'inv_syst')->textInput(['maxlength' => 64])->label('инв№ сист. блока') ?>
         <?= $form->field($model, 'invent_print')->textInput(['maxlength' => 64])->label('инв№ принтера') ?>

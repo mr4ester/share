@@ -29,6 +29,7 @@ class ValidateForm extends Model
     public $printer8;
     public $printer9;
     public $printer10;
+    public $date;
 
     public function rules()
     {

@@ -33,6 +33,7 @@ use Yii;
  * @property string $print_8
  * @property string $print_9
  * @property string $print_10
+ * @property string $date
  *
  * @property Staff[] $staff
  */
@@ -52,7 +53,7 @@ class Configuration extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['invent_num_system', 'invent_num_monitor', 'invent_num_printer', 'cpu', 'motherboard', 'graphics', 'monitor_1', 'monitor_2', 'hdd_1', 'hdd_2', 'memory_1', 'memory_2', 'memory_3', 'memory_4', 'mac', 'print_1', 'print_2', 'print_3', 'print_4', 'print_5', 'print_6', 'print_7', 'print_8', 'print_9', 'print_10'], 'string', 'max' => 255]
+            [['invent_num_system', 'invent_num_monitor', 'invent_num_printer', 'cpu', 'motherboard', 'graphics', 'monitor_1', 'monitor_2', 'hdd_1', 'hdd_2', 'memory_1', 'memory_2', 'memory_3', 'memory_4', 'mac', 'print_1', 'print_2', 'print_3', 'print_4', 'print_5', 'print_6', 'print_7', 'print_8', 'print_9', 'print_10','date'], 'string']
         ];
     }
 
@@ -69,8 +70,8 @@ class Configuration extends \yii\db\ActiveRecord
             'cpu' => 'Cpu',
             'motherboard' => 'Motherboard',
             'graphics' => 'Graphics',
-            'monitor_1' => 'Monitor 1',
-            'monitor_2' => 'Monitor 2',
+            'monitor_1' => 'Монитор 1',
+            'monitor_2' => 'Монитор 2',
             'hdd_1' => 'Hdd 1',
             'hdd_2' => 'Hdd 2',
             'memory_1' => 'Memory 1',
@@ -88,6 +89,7 @@ class Configuration extends \yii\db\ActiveRecord
             'print_8' => 'Print 8',
             'print_9' => 'Print 9',
             'print_10' => 'Print 10',
+            'date' => 'Дата поступления',
         ];
     }
 

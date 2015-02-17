@@ -80,9 +80,9 @@ class UploadController extends Controller
                     /* так как файлы с конфигурацией в кодировке windows-1251, то */
                     $data = iconv('windows-1251', 'UTF-8', $data); //меняем  кодировку на utf8
 
-                    @list($names, $inf, $info) = explode("|", $data);
-                    @list($type, $equipment) = explode("=", $inf);
-                    @list($name, $types) = explode("=", $info);
+                    @list($names, $inf, $info) = explode("|", $data);// знак @ предотвращяет ошибку
+                    @list($type, $equipment) = explode("=", $inf);  //а она вылазит когда функция explode возращает строку
+                    @list($name, $types) = explode("=", $info); //в который нет трех слов, результат list() выбрасывает ошибку
 
                     foreach ($array as $key => $value) {
                         if (mb_strtolower($type, 'UTF-8') == $key) {
@@ -149,6 +149,7 @@ class UploadController extends Controller
 
         if (Yii::$app->request->post('ValidateForm')) { // если была отправленна форма
             $array = Yii::$app->request->post('ValidateForm');
+            $saveConf->date = $array['date'];
             $saveConf->invent_num_system = $array['inv_syst'];
             $saveConf->invent_num_monitor 	 = $array['inv_mon'];
             $saveConf->invent_num_printer = $array['invent_print'];
@@ -157,10 +158,10 @@ class UploadController extends Controller
             $saveConf->graphics = $array['gpu'];
             $saveConf->mac = $array['mac'];
             $saveConf->memory_1 = $array['mem1'];
-            if (isset($array['mem2'])) {
-                $saveConf->memory_2 = $array['mem2'];
-            }
-            if (isset($array['mem3'])) {
+            if (isset($array['mem2'])) {          //условия потому что, если в виде отсутсвуют
+                $saveConf->memory_2 = $array['mem2']; // поля то в массиве POST отсутсвуют
+            }                                          // ключи значения которых мы берем
+            if (isset($array['mem3'])) {                //и как результат ошибка
                 $saveConf->memory_3 = $array['mem3'];
             }
             if (isset($array['mem4'])) {
