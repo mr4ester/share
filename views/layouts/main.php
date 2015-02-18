@@ -31,7 +31,7 @@ AppAsset::register($this);
     /*Зададим виджету меню другой css класс*/
     \Yii::$container->set('yii\bootstrap\NavBar',[
         'innerContainerOptions'=>[
-            'class'=>'container-fluid',
+            'class'=>'conИиtainer-fluid',
         ],
     ]);
 
