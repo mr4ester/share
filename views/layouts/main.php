@@ -28,11 +28,18 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <div class="wrap ">
     <?php
+    /*Зададим виджету меню другой css класс*/
+    \Yii::$container->set('yii\bootstrap\NavBar',[
+        'innerContainerOptions'=>[
+            'class'=>'container-fluid',
+        ],
+    ]);
+
     NavBar::begin([
         'brandLabel' => 'Главная',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-inverse navbar-fixed-top ',
         ],
     ]);
     echo Nav::widget([
