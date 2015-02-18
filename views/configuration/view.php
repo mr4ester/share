@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Configuration */
 
-$this->title = $model->id_configuration;
+$this->title = Html::encode($staff);
 $this->params['breadcrumbs'][] = ['label' => 'Configurations', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,13 +16,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Изменить', ['update', 'id' => $model->id_configuration], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Переместить', ['move', 'id' => $model->id_configuration], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Удалить', ['delete', 'id' => $model->id_configuration], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы действительно хотеть удалить данную конфигурацию?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ])
+        ?>
+
     </p>
 
     <?=  DetailView::widget([
