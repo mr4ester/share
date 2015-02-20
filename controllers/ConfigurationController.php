@@ -133,15 +133,31 @@ class ConfigurationController extends Controller
     }
     public function actionMove($id){
 
-        $model = new ValidateForm();
-        $staff = Staff::find()->all();
+        if ($array =Yii::$app->request->post('ValidateForm')) {
+            echo '<br><br><br><br><br><br>';
+            $staff = Staff::find()->where(['id_configuration'=>$id])->asArray()->one();//ищем владельца текущей конфигурации с которой работаем
+            $conf = Configuration::findOne($id);//ищем конфигурацию с которой работаем
+            $conf->old_staff = $staff['id_staff'];//записываем в эту конфигурацию id текущего владельца
+            $staffNew = Staff::findOne($array['staff']);//ищем нового владельца конфигурацией
+            $staffNew->id_configuration=$id;//и присваеваем ему новую конфигурацию
+            $conf->save();
+            //$staff->save();
+            $staffNew->save();
 
-        $listData = ArrayHelper::map($staff,'id_staff', 'fio' );// выбирает из масиива ключ-значение
-        if (Yii::$app->request->post('ValidateForm')) {
+
+            print_r($staff['id_staff']);
+            var_dump($id);
+            var_dump($staff['id_staff']);
+
+            //return $this->redirect(['index']);
 
 
         }
 
+        $model = new ValidateForm();
+        $staff = Staff::find()->all();
+
+        $listData = ArrayHelper::map($staff,'id_staff', 'fio' );// выбирает из масиива ключ-значение
 
         return $this->render('move',[
             'listData'=> $listData,
