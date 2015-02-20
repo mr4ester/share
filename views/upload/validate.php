@@ -3,7 +3,8 @@ use yii\helpers\Html;
 //use yii\widgets\ActiveForm;
 use yii\bootstrap\ActiveForm;
 use yii\jui\DatePicker;
-use yii\bootstrap\Alert;
+use yii\jui\Dialog;
+
 
 ?>
 
@@ -65,4 +66,5 @@ use yii\bootstrap\Alert;
         </div>
 
         <?php ActiveForm::end(); ?>
+
 

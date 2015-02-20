@@ -14,6 +14,7 @@ use yii\web\Response;
 use yii\helpers\ArrayHelper;
 
 
+
 class UploadController extends Controller
 {
     public $data;
@@ -206,6 +207,7 @@ class UploadController extends Controller
             $updateStaff = Staff::findOne($array['staff']); // делаем запрос к таблице сотрудники, с id выбранным в форме
             $updateStaff->id_configuration = $key;// добавляем id конфигурации к выбранному сотруднику
             $updateStaff->update(); // и обновляем запись в базе данных
+            return $this->redirect(Yii::$app->homeUrl, 302);
 
         }
 

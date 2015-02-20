@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Изменить', ['update', 'id' => $model->id_configuration], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Переместить', ['move', 'id' => $model->id_configuration], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Переместить', ['move', 'id' => $model->id_configuration], ['class' => 'btn btn-success', 'data'=>['method' => 'post'],]) ?>
         <?= Html::a('Удалить', ['delete', 'id' => $model->id_configuration], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Вы действительно хотеть удалить данную конфигурацию?',
+                'confirm' => 'Вы действительно хотите удалить данную конфигурацию?',
                 'method' => 'post',
             ],
         ])
