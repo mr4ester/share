@@ -9,6 +9,9 @@ use app\models\Staff;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
+use yii\helpers\ArrayHelper;
+use app\models\ValidateForm;
 
 
 /**
@@ -23,6 +26,7 @@ class ConfigurationController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                    'move'=>['post'],
                 ],
             ],
         ];
@@ -102,6 +106,11 @@ class ConfigurationController extends Controller
      */
     public function actionDelete($id)
     {
+
+        $staff=Staff::find()->where(['id_configuration'=>$id])->one();//сначала ищем в таблице сотрудников
+        $staff->id_configuration = '';//id конфигурации и удаляем, если этого не сделать, вылазит ошибка
+        $staff->update();//о внешнем ключе который зависим от конфигурации и удаления не будет
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -121,5 +130,24 @@ class ConfigurationController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    public function actionMove($id){
+
+        $model = new ValidateForm();
+        $staff = Staff::find()->all();
+
+        $listData = ArrayHelper::map($staff,'id_staff', 'fio' );// выбирает из масиива ключ-значение
+        if (Yii::$app->request->post('ValidateForm')) {
+
+
+        }
+
+
+        return $this->render('move',[
+            'listData'=> $listData,
+            'model'=>$model,
+            'id'=>$id,
+        ]);
+
     }
 }
