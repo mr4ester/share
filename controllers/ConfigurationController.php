@@ -54,11 +54,20 @@ class ConfigurationController extends Controller
      */
     public function actionView($id, $staff=null)
     {
-        $staff = Staff::find()->where(['id_configuration' => $id])->asArray()->one();
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-            'staff' => $staff['fio'],
-        ]);
+        if ($id == 0) { //если ноль значит у сотрудника нет конфигурации
+            $fio = Staff::find()->where(['id_staff' => $staff])->asArray()->one();
+            return $this->render('not_configuration',[ //реднерим вид и предлагаем назначить конфигурацию
+                'staff'=> $staff,
+                'fio'=> $fio['fio'],
+            ]);
+        }
+        else{
+            $staff = Staff::find()->where(['id_configuration' => $id])->asArray()->one();
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+                'staff' => $staff['fio'],
+            ]);
+        }
     }
 
 
