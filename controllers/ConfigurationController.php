@@ -52,7 +52,7 @@ class ConfigurationController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($id, $staff=null)
     {
         $staff = Staff::find()->where(['id_configuration' => $id])->asArray()->one();
         return $this->render('view', [
@@ -60,6 +60,7 @@ class ConfigurationController extends Controller
             'staff' => $staff['fio'],
         ]);
     }
+
 
     /**
      * Creates a new Configuration model.
