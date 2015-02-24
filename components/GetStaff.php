@@ -30,12 +30,15 @@ class GetStaff extends Widget
 
             $staff = Staff::find()->where(['id_department' => $arr['id_department']])->asArray()->all();
             foreach ($staff as $value) {
+                if(empty($value['id_configuration'])){
+                    $value['id_configuration']=0;
+                }
 
                 $this->listData .= '<ul class="Container-tree">
                                 <li class="Node ExpandLeaf IsLast">
                                 <div class="Expand"></div>
                                 <div class="Content">
-                                 <a  href="' . \Yii::$app->urlManager->createUrl(['configuration/view' , 'id'=>$value['id_configuration']]) . '" >' . $value['fio'] .
+                                 <a  href="' . \Yii::$app->urlManager->createUrl(['configuration/view' , 'id'=>$value['id_configuration'], 'staff'=>$value['id_staff']]) . '" >' . $value['fio'] .
                                  '</a></div></li></ul>';
 
             }
