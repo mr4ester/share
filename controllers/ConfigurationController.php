@@ -186,7 +186,6 @@ class ConfigurationController extends Controller
         foreach($conf as $key){
             $id_conf[$key['id_configuration']] = '';
         }
-
         $result = array_diff_assoc($id_conf,$id_staff);
        return $this->render('assign');
 
