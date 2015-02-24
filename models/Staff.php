@@ -10,6 +10,8 @@ use Yii;
  * @property integer $id_staff
  * @property integer $id_department
  * @property integer $id_configuration
+ * @property integer $id_monitor
+ * @property integer $id_printer
  * @property string $name
  * @property string $patronymic
  * @property string $surname
@@ -34,7 +36,7 @@ class Staff extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_department', 'id_configuration'], 'integer'],
+            [['id_department', 'id_configuration','id_monitor', 'id_printer'], 'integer'],
             [['name', 'patronymic', 'surname', 'fio'], 'string', 'max' => 255]
         ];
     }
