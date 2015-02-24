@@ -26,7 +26,7 @@ class ConfigurationController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
-                    'move'=>['post'],
+                    'move' => ['post'],
                 ],
             ],
         ];
@@ -54,10 +54,10 @@ class ConfigurationController extends Controller
      */
     public function actionView($id)
     {
-        $staff = Staff::find()->where(['id_configuration'=>$id])->asArray()->one();
+        $staff = Staff::find()->where(['id_configuration' => $id])->asArray()->one();
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'staff'=> $staff['fio'],
+            'staff' => $staff['fio'],
         ]);
     }
 
@@ -107,7 +107,7 @@ class ConfigurationController extends Controller
     public function actionDelete($id)
     {
 
-        $staff=Staff::find()->where(['id_configuration'=>$id])->one();//сначала ищем в таблице сотрудников
+        $staff = Staff::find()->where(['id_configuration' => $id])->one();//сначала ищем в таблице сотрудников
         $staff->id_configuration = '';//id конфигурации и удаляем, если этого не сделать, вылазит ошибка
         $staff->update();//о внешнем ключе который зависим от конфигурации и удаления не будет
 
@@ -131,25 +131,21 @@ class ConfigurationController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    public function actionMove($id){
 
-        if ($array =Yii::$app->request->post('ValidateForm')) {
-            echo '<br><br><br><br><br><br>';
-            $staff = Staff::find()->where(['id_configuration'=>$id])->asArray()->one();//ищем владельца текущей конфигурации с которой работаем
+    public function actionMove($id)
+    {
+
+        if ($array = Yii::$app->request->post('ValidateForm')) {
+            $staff = Staff::find()->where(['id_configuration' => $id])->one();//ищем владельца текущей конфигурации с которой работаем
             $conf = Configuration::findOne($id);//ищем конфигурацию с которой работаем
             $conf->old_staff = $staff['id_staff'];//записываем в эту конфигурацию id текущего владельца
-            $staffNew = Staff::findOne($array['staff']);//ищем нового владельца конфигурацией
-            $staffNew->id_configuration=$id;//и присваеваем ему новую конфигурацию
+            $staff->id_configuration = ''; //Обнуляем у текущего владельца конфигурацию
+            $staff->save();
+            $staff = Staff::findOne($array['staff']);//ищем нового владельца конфигурацией
+            $staff->id_configuration = $id;//и присваеваем ему новую конфигурацию
             $conf->save();
-            //$staff->save();
-            $staffNew->save();
-
-
-            print_r($staff['id_staff']);
-            var_dump($id);
-            var_dump($staff['id_staff']);
-
-            //return $this->redirect(['index']);
+            $staff->save();
+            return $this->redirect(['configuration/view', 'id' => $id]);
 
 
         }
@@ -157,12 +153,12 @@ class ConfigurationController extends Controller
         $model = new ValidateForm();
         $staff = Staff::find()->all();
 
-        $listData = ArrayHelper::map($staff,'id_staff', 'fio' );// выбирает из масиива ключ-значение
+        $listData = ArrayHelper::map($staff, 'id_staff', 'fio');// выбирает из масиива ключ-значение
 
-        return $this->render('move',[
-            'listData'=> $listData,
-            'model'=>$model,
-            'id'=>$id,
+        return $this->render('move', [
+            'listData' => $listData,
+            'model' => $model,
+            'id' => $id,
         ]);
 
     }
