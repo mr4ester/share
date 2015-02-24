@@ -172,4 +172,23 @@ class ConfigurationController extends Controller
         ]);
 
     }
+    public function actionAssign($id)
+    {
+        $id_conf = [];
+        $is_staff = [];
+        $staff = Staff::find()->asArray()->all();// найдем всех сотрудников
+
+        foreach($staff as $key){
+            $id_staff[$key['id_configuration']] = '';//перебираем массив сотрудников и складываем
+                                                     //в отдельный массив используемые конфигурации
+        }
+        $conf = Configuration::find()->asArray()->all();//найдем все конфигурации
+        foreach($conf as $key){
+            $id_conf[$key['id_configuration']] = '';
+        }
+
+        $result = array_diff_assoc($id_conf,$id_staff);
+       return $this->render('assign');
+
+    }
 }
