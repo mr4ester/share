@@ -154,7 +154,7 @@ class UploadController extends Controller
             $updateStaff = Staff::findOne($id_staff); // делаем запрос к таблице сотрудники, с id выбранным в форме
             $updateStaff->id_monitor = $key;// добавляем id конфигурации к выбранному сотруднику
             $updateStaff->save(); // и обновляем запись в базе данных
-            return $this->redirect(['upload/configuration']);
+            return $this->redirect(['upload/configuration' ,'id'=> $id_staff]);
         }
 
         $staff = Staff::find()->all();
@@ -162,7 +162,7 @@ class UploadController extends Controller
 
         $model->attributes = [      //заполняем атрибуты модели данными из массива
 
-                'id_monitor' => 1,
+                'id_monitor' => '',
                 'invent_num_monitor_1' =>'' ,
                 'invent_num_monitor_2' => '',
                 'monitor_1' => $session['config']['монитор1'],
@@ -182,14 +182,77 @@ class UploadController extends Controller
 
     public function actionConfiguration(){
         $model = new Configuration();
-        return $this->render('/configuration/create',[
+        $session = new Session();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()){
+            $key = $model->getPrimaryKey(); //получаем последний id конфигурации
+            $updateStaff = Staff::findOne(Yii::$app->request->get('id')); // делаем запрос к таблице сотрудники, с id выбранным в форме
+            $updateStaff->id_configuration = $key;// добавляем id конфигурации к выбранному сотруднику
+            $updateStaff->save(); // и обновляем запись в базе данных
+            return $this->redirect(['upload/printers' ,'id'=> Yii::$app->request->get('id')]);
+        }
+
+        /* переберем массив с RAM чтоб задать полям значения по дефолту если планка отсутсвует */
+        $ram = [1=>'',2=>'',3=>'', 4=>'']; // массив для хранения
+
+        foreach($session['memory'] as $key =>$value){ //перебираем основной массив $key = 'имя модуля' $value = [модуль1],[модуль2]...
+            $count = 0;                                 //счетчик
+           foreach($value as $key2 => $value2){  // перебираем значения
+               $count++;
+               if ($value2 !== ''){   // если мадуль1, модуль2 не пустой, присваеваем значение. И так в цикле получаем
+                   $ram[$count] .= '('. $value2 . ')' . ' ' ; // строку вида (Kingston 99U5474-013.A00LF) (2 Гб (1 rank, 8 banks)) (DDR3-1333 (667 МГц))
+               }
+           }
+        }
+
+        $model->attributes = [                  //заполняем модель данными
+            'cpu' => $session['config']['тип цп'],
+            'motherboard' => $session['config']['системная плата'],
+            'graphics' => $session['config']['видеоадаптер1'],
+            'hdd_1' => $session['config']['дисковый накопитель1'],
+            'hdd_2' => $session['config']['дисковый накопитель2'],
+            'memory_1' => $ram[1],
+            'memory_2' =>  $ram[2],
+            'memory_3' => $ram[3],
+            'memory_4' => $ram[4],
+            'mac' => $session['config']['первичный адрес mac'],
+            'date' => '',
+        ];
+                return $this->render('/configuration/create',[
             'model'=>$model,
         ]);
     }
 
 
     public function actionPrinters(){
-        return $this->render('printers');
+        $model = new Printers();
+        $session = new Session();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()){
+            $key = $model->getPrimaryKey(); //получаем последний id конфигурации
+            $updateStaff = Staff::findOne(Yii::$app->request->get('id')); // делаем запрос к таблице сотрудники, с id выбранным в форме
+            $updateStaff->id_printer = $key;// добавляем id конфигурации к выбранному сотруднику
+            $updateStaff->save(); // и обновляем запись в базе данных
+            return $this->redirect(Yii::$app->homeUrl, 302);
+        }
+
+
+        $model->attributes=[
+            'print_1' => $session['config']['принтер1'],
+            'print_2' => $session['config']['принтер2'],
+            'print_3' => $session['config']['принтер3'],
+            'print_4' => $session['config']['принтер4'],
+            'print_5' => $session['config']['принтер5'],
+            'print_6' => $session['config']['принтер6'],
+            'print_7' => $session['config']['принтер7'],
+            'print_8' => $session['config']['принтер8'],
+            'print_9' => $session['config']['принтер9'],
+            'print_10' => $session['config']['принтер10'],
+        ];
+
+        return $this->render('/printers/create',[
+            'model'=>$model
+        ]);
     }
 
 
