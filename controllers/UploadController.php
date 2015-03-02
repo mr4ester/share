@@ -2,16 +2,22 @@
 namespace app\controllers;
 
 
+use app\models\SearchMonitors;
 use app\models\ValidateForm;
 use Yii;
+use yii\helpers\Url;
 use yii\web\Controller;
 use app\models\UploadForm;
 use app\models\Configuration;
 use app\models\Staff;
+use app\models\Monitors;
+use app\models\Printers;
+use app\models\BriefConfiguration;
 use yii\web\UploadedFile;
 use yii\web\Session;
 use yii\web\Response;
 use yii\helpers\ArrayHelper;
+
 
 
 
@@ -124,8 +130,8 @@ class UploadController extends Controller
                 $session['memory'] = $mem;
 
 
+                return $this->redirect(['upload/monitors']);
 
-                return $this->redirect(\Yii::$app->urlManager->createUrl('upload/validate'), 302);
             }
         }
 
@@ -135,6 +141,58 @@ class UploadController extends Controller
         ]);
 
     }
+
+    public function actionMonitors(){
+        $model = new Monitors();
+        $session = new Session();
+
+        if ($array=Yii::$app->request->post()) {
+            $id_staff = ArrayHelper::remove($array['Monitors'], 'staff');
+            $model->load($array);
+            $model->save();
+            $key = $model->getPrimaryKey(); //получаем последний id конфигурации
+            $updateStaff = Staff::findOne($id_staff); // делаем запрос к таблице сотрудники, с id выбранным в форме
+            $updateStaff->id_monitor = $key;// добавляем id конфигурации к выбранному сотруднику
+            $updateStaff->save(); // и обновляем запись в базе данных
+            return $this->redirect(['upload/configuration']);
+        }
+
+        $staff = Staff::find()->all();
+        $listData = ArrayHelper::map($staff,'id_staff', 'fio' );// выбирает из масиива ключ-значение
+
+        $model->attributes = [      //заполняем атрибуты модели данными из массива
+
+                'id_monitor' => 1,
+                'invent_num_monitor_1' =>'' ,
+                'invent_num_monitor_2' => '',
+                'monitor_1' => $session['config']['монитор1'],
+                'monitor_2' => $session['config']['монитор2'],
+                'date_1' => '',
+                'date_2' => '',
+                'old_staff_1' => '{0}',
+                'old_staff_2' => '{0}',];
+
+        return $this->render('/monitors/create',[
+            'model' => $model,
+            'listData'=> $listData,
+    ]);
+
+    }
+
+
+    public function actionConfiguration(){
+        $model = new Configuration();
+        return $this->render('/configuration/create',[
+            'model'=>$model,
+        ]);
+    }
+
+
+    public function actionPrinters(){
+        return $this->render('printers');
+    }
+
+
 
     public function actionValidate()
     {

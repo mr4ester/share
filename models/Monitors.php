@@ -35,7 +35,7 @@ class Monitors extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['invent_num_monitor_1', 'invent_num_monitor_2', 'monitor_1', 'monitor_2', 'date_1', 'date_2', 'old_staff_1', 'old_staff_2'], 'string']
+            [['invent_num_monitor_1', 'invent_num_monitor_2', 'monitor_1', 'monitor_2', 'date_1', 'date_2', 'old_staff_1', 'old_staff_2','staff'], 'string']
         ];
     }
 
@@ -48,10 +48,10 @@ class Monitors extends \yii\db\ActiveRecord
             'id_monitor' => 'Id Monitor',
             'invent_num_monitor_1' => 'Инв № монитора - 1',
             'invent_num_monitor_2' => 'Инв № монитора - 2',
-            'monitor_1' => 'Модель ',
-            'monitor_2' => 'Модель',
-            'date_1' => 'Дата поступления',
-            'date_2' => 'Дата поступления',
+            'monitor_1' => 'Модель монитора - 1 ',
+            'monitor_2' => 'Модель монитора - 2 ',
+            'date_1' => 'Дата поступления монитора - 1',
+            'date_2' => 'Дата поступления монитора - 2',
             'old_staff_1' => 'Old Staff 1',
             'old_staff_2' => 'Old Staff 2',
         ];
@@ -63,5 +63,6 @@ class Monitors extends \yii\db\ActiveRecord
     public function getStaff()
     {
         return $this->hasMany(Staff::className(), ['id_monitor' => 'id_monitor']);
+
     }
 }

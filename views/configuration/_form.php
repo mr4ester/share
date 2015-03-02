@@ -1,7 +1,9 @@
+
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Configuration */
@@ -10,58 +12,47 @@ use yii\widgets\ActiveForm;
 
 <div class="configuration-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'id' => 'config-form',
+        'layout' => 'horizontal',
+        'fieldConfig' => [
+            'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+            'horizontalCssClasses' => [
+                'label' => 'col-sm-2',
+                'offset' => 'col-sm-offset-4',
+                'wrapper' => 'col-sm-8',
+                'error' => '',
+                'hint' => ''
 
+            ],
+        ],
+    ]); ?>
 
-    <?= $form->field($model, 'invent_num_system')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'invent_num_system')->textInput() ?>
 
-    <?= $form->field($model, 'invent_num_monitor')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'cpu')->textInput() ?>
 
-    <?= $form->field($model, 'invent_num_printer')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'motherboard')->textInput() ?>
 
-    <?= $form->field($model, 'cpu')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'graphics')->textInput() ?>
 
-    <?= $form->field($model, 'motherboard')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'hdd_1')->textInput() ?>
 
-    <?= $form->field($model, 'graphics')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'hdd_2')->textInput() ?>
 
-    <?= $form->field($model, 'monitor_1')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'memory_1')->textInput() ?>
 
-    <?= $form->field($model, 'monitor_2')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'memory_2')->textInput() ?>
 
-    <?= $form->field($model, 'hdd_1')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'memory_3')->textInput() ?>
 
-    <?= $form->field($model, 'hdd_2')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'memory_4')->textInput() ?>
 
-    <?= $form->field($model, 'memory_1')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'mac')->textInput() ?>
 
-    <?= $form->field($model, 'memory_2')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'date')->textInput() ?>
 
-    <?= $form->field($model, 'memory_3')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'memory_4')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'mac')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'print_1')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'print_2')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'print_3')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'print_4')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'print_5')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'print_6')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'print_7')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'print_8')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'print_9')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'print_10')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'old_staff')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

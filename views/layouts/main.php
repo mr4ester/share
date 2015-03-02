@@ -31,7 +31,7 @@ AppAsset::register($this);
     /*Зададим виджету меню другой css класс*/
     \Yii::$container->set('yii\bootstrap\NavBar',[
         'innerContainerOptions'=>[
-            'class'=>'conИиtainer-fluid',
+            'class'=>'container-fluid',
         ],
     ]);
 
@@ -94,7 +94,7 @@ AppAsset::register($this);
 
                 </div>
             </div>
-            <dv class="col-md-10">
+            <dv class="col-md-10 ">
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>

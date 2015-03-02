@@ -22,6 +22,7 @@ use Yii;
  * @property string $date
  * @property string $old_staff
  *
+ * @property BriefConfiguration[] $briefConfigurations
  * @property Staff[] $staff
  */
 class Configuration extends \yii\db\ActiveRecord
@@ -40,8 +41,7 @@ class Configuration extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_configuration','old_staff'], 'integer'],
-            [['invent_num_system', 'cpu', 'motherboard', 'graphics', 'hdd_1', 'hdd_2', 'memory_1', 'memory_2', 'memory_3', 'memory_4', 'mac','date'], 'string']
+            [['invent_num_system', 'cpu', 'motherboard', 'graphics', 'hdd_1', 'hdd_2', 'memory_1', 'memory_2', 'memory_3', 'memory_4', 'mac', 'date', 'old_staff'], 'string']
         ];
     }
 
@@ -66,6 +66,14 @@ class Configuration extends \yii\db\ActiveRecord
             'date' => 'Дата поступления',
             'old_staff'=> 'Бывший сотрудник',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBriefConfigurations()
+    {
+        return $this->hasMany(BriefConfiguration::className(), ['id_configuration' => 'id_configuration']);
     }
 
     /**

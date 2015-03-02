@@ -24,13 +24,10 @@ class AddController extends Controller
             $saveDepartment->save();
 
         }
-        $deport = Department::find()->all();
-        $listData = ArrayHelper::map($deport,'id_department', 'department' );
 
 
         return $this->render('add-department' ,[
         'model'=> $model,
-            'listData'=> $listData
         ]);
 
     }
