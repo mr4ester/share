@@ -4,6 +4,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\jui\DatePicker;
+use yii\bootstrap\Alert;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Configuration */
@@ -49,6 +50,17 @@ use yii\jui\DatePicker;
     <?= $form->field($model, 'memory_4')->textInput() ?>
 
     <?= $form->field($model, 'mac')->textInput() ?>
+
+    <?=Alert::widget([
+        'options' => [
+            'class' => 'alert-info',
+        ],
+        'body' => 'В следующем поле приведа общая конфигурация процессора, оперативной памяти и жесткого диска. В последующем
+         данная строка будет отображать название компьютера на карточках сотрудников. Сократите ее до максимально возмножного
+         понятного вида. <br> Пример CPU -DualCore Intel Core i3-540 , RAM -2x2 Гб  , HDD -500 Гб ',
+    ]); ?>
+
+    <?= $form->field($model, 'title')->textInput() ?>
 
     <?= $form->field($model,'date')->widget(DatePicker::className(),['language'=>'ru','dateFormat' => 'dd-MM-yyyy',]) ?>
 
