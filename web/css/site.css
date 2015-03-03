@@ -109,3 +109,8 @@ a.desc:after {
     cursor: inherit;
     display: block;
 }
+
+ .brd {
+     border: 2px ridge ;
+     padding: 10px;
+ }
