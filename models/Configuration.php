@@ -30,6 +30,7 @@ class Configuration extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $title;
     public static function tableName()
     {
         return 'configuration';
@@ -41,7 +42,7 @@ class Configuration extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['invent_num_system', 'cpu', 'motherboard', 'graphics', 'hdd_1', 'hdd_2', 'memory_1', 'memory_2', 'memory_3', 'memory_4', 'mac', 'date', 'old_staff'], 'string']
+            [['invent_num_system', 'cpu', 'motherboard', 'graphics', 'hdd_1', 'hdd_2', 'memory_1', 'memory_2', 'memory_3', 'memory_4', 'mac', 'date', 'old_staff','title'], 'string']
         ];
     }
 
@@ -65,6 +66,7 @@ class Configuration extends \yii\db\ActiveRecord
             'mac' => 'Mac адресс',
             'date' => 'Дата поступления',
             'old_staff'=> 'Бывший сотрудник',
+            'title' =>'Краткое название конфигурации',
         ];
     }
 

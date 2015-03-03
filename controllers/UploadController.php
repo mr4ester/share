@@ -183,12 +183,16 @@ class UploadController extends Controller
     {
         $model = new Configuration();
         $session = new Session();
+        $briefModel = new BriefConfiguration();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load($array = Yii::$app->request->post()) && $model->save()) {
             $key = $model->getPrimaryKey(); //получаем последний id конфигурации
+            $briefModel->id_configuration = $key; //пишем в таблицу с кратким названием конфигурации id  конфигурации
+            $briefModel->title = $array['Configuration']['title']; // записываем краткое название
             $updateStaff = Staff::findOne(Yii::$app->request->get('id')); // делаем запрос к таблице сотрудники, с id выбранным в форме
             $updateStaff->id_configuration = $key;// добавляем id конфигурации к выбранному сотруднику
             $updateStaff->save(); // и обновляем запись в базе данных
+            $briefModel->save(); // сохраняем
             return $this->redirect(['upload/printers', 'id' => Yii::$app->request->get('id')]);
         }
 
@@ -217,7 +221,17 @@ class UploadController extends Controller
             'memory_4' => $ram[4],
             'mac' => $session['config']['первичный адрес mac'],
             'date' => '',
+            'title'=>   'CPU -'.
+                $session['config']['тип цп']. ' , '.
+                    'RAM -'.
+                $session['memory']['размер модуля']['модуль1'].' , '.
+                $session['memory']['размер модуля']['модуль2'].'  '.
+                $session['memory']['размер модуля']['модуль3'].'  '.
+                $session['memory']['размер модуля']['модуль4'].'  '.
+                    'HDD -'.
+                $session['config']['дисковый накопитель1'],
         ];
+
         return $this->render('/configuration/create', [
             'model' => $model,
         ]);
@@ -228,6 +242,7 @@ class UploadController extends Controller
     {
         $model = new Printers();
         $session = new Session();
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $key = $model->getPrimaryKey(); //получаем последний id конфигурации
