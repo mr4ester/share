@@ -37,8 +37,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'cpu:html',
             'motherboard:html',
             'graphics:html',
-            'monitor_1:html',
-            'monitor_2:html',
             'hdd_1:html',
             'hdd_2:html',
             'memory_1:html',
