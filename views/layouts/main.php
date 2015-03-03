@@ -82,10 +82,10 @@ AppAsset::register($this);
     ?>
 
     <div class="container-fluid ">
-        <div class="row">
-            <div class="col-md-2 ">
+        <div class="row-fluid">
+            <div class="col-md-2  ">
                 <div class="left-staff">
-                    <br><br>
+
                     <h3 class="text-center">Сотрудники</h3>
 
                 <?=GetStaff::widget()?>
@@ -94,12 +94,14 @@ AppAsset::register($this);
 
                 </div>
             </div>
-            <dv class="col-md-10 ">
+            <div class="col-md-10 ">
+                <div class="content">
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
-                <br><br><br>
+
                 <?= $content ?>
+                    </div>
             </div>
         </div>
     </div>
