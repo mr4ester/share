@@ -111,6 +111,13 @@ a.desc:after {
 }
 
  .brd {
-     border: 2px ridge ;
+     border: 1px ridge ;
      padding: 10px;
+     margin: 10px;
  }
+.left-staff  {
+    margin-top: 60px;
+}
+.content {
+    margin-top: 60px;
+}
