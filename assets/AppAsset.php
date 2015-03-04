@@ -20,6 +20,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/tree.css',
+        'simple-sidebar.css',
     ];
     public $js = [
         'js/tree.js',

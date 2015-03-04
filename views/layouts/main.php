@@ -85,13 +85,15 @@ AppAsset::register($this);
         <div class="row-fluid">
             <div class="col-md-2  ">
                 <div class="left-staff">
+                    <div class="sidebar">
 
                     <h3 class="text-center">Сотрудники</h3>
+
 
                 <?=GetStaff::widget()?>
 
 
-
+                    </div>
                 </div>
             </div>
             <div class="col-md-10 ">

@@ -117,6 +117,7 @@ a.desc:after {
  }
 .left-staff  {
     margin-top: 60px;
+    border-right:1px solid #ddd;
 }
 .content {
     margin-top: 60px;

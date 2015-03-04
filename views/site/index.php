@@ -1,51 +1,106 @@
 <?php
+use yii\grid\GridView;
 /* @var $this yii\web\View */
 $this->title = 'PCinventory';
 ?>
+
 <div class="site-index">
-
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
 
     <div class="body-content">
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i> Панель уведомлений
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-comment fa-fw"></i> New Comment
+                        <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                        <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                        </span>
+                         </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-envelope fa-fw"></i> Message Sent
+                        <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-tasks fa-fw"></i> New Task
+                        <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                        <span class="pull-right text-muted small"><em>11:32 AM</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-bolt fa-fw"></i> Server Crashed!
+                        <span class="pull-right text-muted small"><em>11:13 AM</em>
+                        </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-warning fa-fw"></i> Server Not Responding
+                            <span class="pull-right text-muted small"><em>10:57 AM</em>
+                            </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
+                            <span class="pull-right text-muted small"><em>9:49 AM</em>
+                            </span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-money fa-fw"></i> Payment Received
+                     <span class="pull-right text-muted small"><em>Yesterday</em>
+                    </span>
+                        </a>
+                    </div>
+                    <!-- /.list-group -->
+                    <a href="#" class="btn btn-default btn-block">Показать все уведомления</a>
+                </div>
+                <!-- /.panel-body -->
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+            <!-- /.panel -->
         </div>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i> Панель уведомлений
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+                        <?= GridView::widget([
+                            'dataProvider' => $dataProvider,
 
+                            'columns' => [
+
+
+                                'monitor_1',
+                                'monitor_2',
+
+
+                                ['class' => 'yii\grid\ActionColumn'],
+                            ],
+                        ]); ?>
+                    </div>
+                    <!-- /.list-group -->
+                    <a href="#" class="btn btn-default btn-block">Показать все уведомления</a>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
     </div>
-</div>
+    </div>
+
+
+
