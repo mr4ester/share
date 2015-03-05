@@ -107,18 +107,6 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public  function actionView($id ,$staff){
-        $id_staff = Staff::findOne($staff);
-        $id_mon = Monitors::findOne($id_staff['id_monitor']);
-        $id_conf = Configuration::findOne($id);
-
-        return $this->render('say', [
-           'conf' => $id_conf,
-            'mon'=> $id_mon,
-        ]);
-
-
-    }
 
 
 
