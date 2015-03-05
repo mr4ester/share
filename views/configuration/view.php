@@ -6,13 +6,13 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Configuration */
 
-$this->title = Html::encode($staff);
+//$this->title = Html::encode($staff);
 $this->params['breadcrumbs'][] = ['label' => 'Configurations', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="configuration-view">
 
-    <h2><?= Html::encode($staff) ?></h2>
+
 
     <p>
         <?= Html::a('Изменить', ['update', 'id' => $model->id_configuration], ['class' => 'btn btn-primary']) ?>

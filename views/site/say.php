@@ -1,4 +1,12 @@
 <?php
 use yii\helpers\Html;
 ?>
-dsfsdfsdfsdf
+
+<?= $this->render('/configuration/view', [
+    'model' => $conf,
+]) ?>
+
+<?= $this->render('/monitors/view', [
+    'model' => $mon,
+]) ?>
+
