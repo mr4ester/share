@@ -46,22 +46,7 @@ $this->title = 'PCinventory';
                             <i class="fa fa-bolt fa-fw"></i> Server Crashed!
                         <span class="pull-right text-muted small"><em>11:13 AM</em>
                         </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-warning fa-fw"></i> Server Not Responding
-                            <span class="pull-right text-muted small"><em>10:57 AM</em>
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
-                            <span class="pull-right text-muted small"><em>9:49 AM</em>
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-money fa-fw"></i> Payment Received
-                     <span class="pull-right text-muted small"><em>Yesterday</em>
-                    </span>
-                        </a>
+
                     </div>
                     <!-- /.list-group -->
                     <a href="#" class="btn btn-default btn-block">Показать все уведомления</a>
@@ -73,27 +58,67 @@ $this->title = 'PCinventory';
         <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-bell fa-fw"></i> Панель уведомлений
+                    <i class="fa fa-bell fa-fw"></i> Остаток на складе
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="list-group">
-                        <?= GridView::widget([
-                            'dataProvider' => $dataProvider,
 
-                            'columns' => [
-
-
-                                'monitor_1',
-                                'monitor_2',
-
-
-                                ['class' => 'yii\grid\ActionColumn'],
-                            ],
-                        ]); ?>
                     </div>
                     <!-- /.list-group -->
                     <a href="#" class="btn btn-default btn-block">Показать все уведомления</a>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i> Приходы
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+
+                    </div>
+                    <!-- /.list-group -->
+                    <a href="#" class="btn btn-default btn-block">Показать все уведомления</a>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i> Расходы
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+
+                    </div>
+                    <!-- /.list-group -->
+                    <a href="#" class="btn btn-default btn-block">Показать все уведомления</a>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i> Заправка картриджей
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+
+                    </div>
+                    <!-- /.list-group -->
+                    <a href="#" class="btn btn-default btn-block">Показать все</a>
                 </div>
                 <!-- /.panel-body -->
             </div>

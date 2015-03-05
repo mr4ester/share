@@ -33,7 +33,7 @@ use yii\widgets\DetailView;
                 </div>
                 <!-- /.list-group -->
                 <p>
-                    <?= Html::a('Обновить', ['update_monitors', 'id' => $model->id_monitor], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a('Изменить', ['update_monitors', 'id' => $model->id_monitor], ['class' => 'btn btn-primary']) ?>
                     <?= Html::a('Удалить', ['delete_monitors', 'id' => $model->id_monitor], [
                         'class' => 'btn btn-danger',
                         'data' => [

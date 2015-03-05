@@ -41,7 +41,7 @@ use yii\widgets\DetailView;
             </div>
             <!-- /.list-group -->
             <p>
-                <?= Html::a('Обновить', ['update_printers', 'id' => $model->id_printer], ['class' => 'btn btn-primary']) ?>
+                <?= Html::a('Изменить', ['update_printers', 'id' => $model->id_printer], ['class' => 'btn btn-primary']) ?>
                 <?= Html::a('Удалить', ['delete_printers', 'id' => $model->id_printer], [
                     'class' => 'btn btn-danger',
                     'data' => [

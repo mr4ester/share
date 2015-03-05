@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\BriefConfiguration;
+use app\models\Department;
 use Yii;
 use app\models\Monitors;
 use app\models\SearchMonitors;
@@ -112,6 +114,7 @@ class ConfigurationController extends Controller
     /****************  Метод для обновления конфигурации  ***********/
     public function actionUpdate_configuration($id)
     {
+
         $model = $this->findModel_configuration($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -135,7 +138,7 @@ class ConfigurationController extends Controller
     {
 
         $staff = Staff::find()->where(['id_configuration' => $id])->one();//сначала ищем в таблице сотрудников
-        $staff->id_configuration = '';//id конфигурации и удаляем, если этого не сделать, вылазит ошибка
+        $staff->id_configuration = '';//id конфигурации и удаляем, если этого не сделать, вылазит ошибка из за связи
         $staff->update();//о внешнем ключе который зависим от конфигурации и удаления не будет
 
         $this->findModel_configuration($id)->delete();
@@ -208,6 +211,7 @@ class ConfigurationController extends Controller
      */
     public function actionUpdate_monitors($id)
     {
+
         $model = $this->findModel_monitors($id);
 
 
@@ -397,10 +401,12 @@ class ConfigurationController extends Controller
 
     /********* Метод для отображения всех конфигураций при (мониторы, притнеры, конфигурация) привязанной к сотруднику***/
     public function actionView_all_configuration($id){
+
         $id_staff = Staff::findOne($id);
         $id_mon = Monitors::findOne($id_staff['id_monitor']);
         $id_conf = Configuration::findOne($id_staff['id_configuration']);
         $id_print = Printers::findOne($id_staff['id_printer']);
+
 
         return $this->render('view_all', [
             'staff' => $id_staff,
@@ -408,8 +414,35 @@ class ConfigurationController extends Controller
             'monitors'=> $id_mon,
             'printers'=>$id_print,
         ]);
-        /******************** END *******************/
     }
+    /******************** END *******************/
+
+    /******** Метод отображения краткой информации о сотруднике ***********/
+
+    public function actionView_short_configuration($id){
+        /*
+         * Функция принимает id сотрудника
+         */
+        $id_staff = Staff::findOne($id);  // ищем сотрудника по id
+        $id_mon = Monitors::findOne($id_staff['id_monitor']); //ищем его конфигурацию мониторов
+        $id_brief = BriefConfiguration::find()->where(['id_configuration'=>$id_staff['id_configuration']])->one(); // ищем его краткую конфигурацию системного блока
+        $id_print = Printers::findOne($id_staff['id_printer']); // ищем его принтеры
+        $id_deport = Department::findOne($id_staff['id_department']); //отделение
+        $id_conf = Configuration::findOne($id_staff['id_configuration']);// полная конфигурация
+
+        return $this->render('view-short', [
+            'staff' => $id_staff,
+            'brief_conf' => $id_brief,
+            'monitors'=> $id_mon,
+            'printers'=>$id_print,
+            'department'=>$id_deport,
+            'configuration'=>$id_conf,
+        ]);
+    }
+
+    /******************** END *******************/
+
+
 }
 
 
