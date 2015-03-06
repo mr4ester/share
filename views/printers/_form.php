@@ -13,6 +13,7 @@ use yii\bootstrap\Alert;
 
 <div class="printers-form">
 
+
     <?php $form = ActiveForm::begin([
         'id' => 'config-form',
         'layout' => 'horizontal',
@@ -29,47 +30,95 @@ use yii\bootstrap\Alert;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'invent_num_printer_1')->textInput() ?>
 
-    <?= $form->field($model, 'invent_num_printer_2')->textInput() ?>
-
-    <?=Alert::widget([
+    <?= Alert::widget([
         'options' => [
             'class' => 'alert-info',
         ],
-        'body' => 'В приведенной ниже форме необходимо отчистить поля всех ненужных принтеров ',
+        'body' => 'Выберите необходимые принтеры в выпадающих списках, при необходимости можно написать свой принтер ',
     ]); ?>
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <div class="list-group">
 
-    <?= $form->field($model, 'print_1')->textInput() ?>
+                <?= $form->field($model, 'print_1')->listBox($listData, ['prompt' => '', 'size' => 1]); ?>
 
-    <?= $form->field($model, 'print_2')->textInput() ?>
+                <?= $form->field($model, 'invent_num_printer_1')->textInput() ?>
 
-    <?= $form->field($model, 'print_3')->textInput() ?>
-
-    <?= $form->field($model, 'print_4')->textInput() ?>
-
-    <?= $form->field($model, 'print_5')->textInput() ?>
-
-    <?= $form->field($model, 'print_6')->textInput() ?>
-
-    <?= $form->field($model, 'print_7')->textInput() ?>
-
-    <?= $form->field($model, 'print_8')->textInput() ?>
-
-    <?= $form->field($model, 'print_9')->textInput() ?>
-
-    <?= $form->field($model, 'print_10')->textInput() ?>
-
-    <?= $form->field($model,'date_1')->widget(DatePicker::className(),['language'=>'ru','dateFormat' => 'dd-MM-yyyy',]) ?>
-
-    <?= $form->field($model,'date_2')->widget(DatePicker::className(),['language'=>'ru','dateFormat' => 'dd-MM-yyyy',]) ?>
+                <?= $form->field($model, 'date_1')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd-MM-yyyy',]) ?>
 
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <div class="list-group">
 
+                <?= $form->field($model, 'print_2')->listBox($listData, ['prompt' => '', 'size' => 1]); ?>
+
+                <?= $form->field($model, 'invent_num_printer_2')->textInput() ?>
+
+                <?= $form->field($model, 'date_2')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd-MM-yyyy',]) ?>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <div class="list-group">
+
+                <?= $form->field($model, 'print_3')->textInput() ?>
+
+                <?= $form->field($model, 'invent_num_printer_3')->textInput() ?>
+
+                <?= $form->field($model, 'date_3')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd-MM-yyyy',]) ?>
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <div class="list-group">
+
+                <?= $form->field($model, 'print_4')->textInput() ?>
+
+                <?= $form->field($model, 'invent_num_printer_4')->textInput() ?>
+
+                <?= $form->field($model, 'date_4')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd-MM-yyyy',]) ?>
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <div class="list-group">
+                <?= $form->field($model, 'print_5')->textInput() ?>
+
+                <?= $form->field($model, 'invent_num_printer_5')->textInput() ?>
+
+                <?= $form->field($model, 'date_5')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd-MM-yyyy',]) ?>
+
+
+
+            </div>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>
+
+    <div class="form-group">
+        <p>
+
+            <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+
+        </p>
+    </div>
+
 
 </div>
