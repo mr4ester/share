@@ -10,8 +10,9 @@ use yii\helpers\Html;
 
     <div class="col-lg-8">
     <div class="panel panel-info">
-
-        <!-- /.panel-heading -->
+        <div class="panel-heading">
+           <b><i class="fa fa-bell fa-fw">Карточка сотрудника</i></b>
+        </div>
         <div class="panel-body">
             <div class="list-group">
                 <table class="table">
@@ -42,6 +43,17 @@ use yii\helpers\Html;
                         <td><?=$configuration->date ?></td>
                         <td><?=$configuration->invent_num_system ?></td>
                     </tr>
+
+
+                        <?php for($i=1; $i<=5; $i++){ //для того чтоб не выводить пустые строки принтеров запустим цикл
+                            if(!empty($printers['print_'.$i])){//проверим не пустой ли ключ массива если нет, выводим
+                                echo '<tr><td>Принтер '.$i .'</td>'; //выводим заголовок
+                                echo '<td>'.$printers['print_'.$i].'</td>'; //название принтера
+                                echo '<td>'.$printers['date_'.$i].'</td>'; //дата поступления
+                                echo  '<td>'.$printers['invent_num_printer_'.$i].'</td></tr>'; //инвентарный номер
+                            }
+                        }?>
+
 
                 </table>
 
