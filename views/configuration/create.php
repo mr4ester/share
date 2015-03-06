@@ -6,9 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Configuration */
 
-$this->title = 'Create Configuration';
-$this->params['breadcrumbs'][] = ['label' => 'Configurations', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Добавление конфигурации';
+
 ?>
 <div class="configuration-create">
 

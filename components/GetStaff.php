@@ -36,7 +36,7 @@ class GetStaff extends Widget
                                 <li class="Node ExpandLeaf IsLast">
                                 <div class="Expand"></div>
                                 <div class="Content">
-                                 <a  href="' . \Yii::$app->urlManager->createUrl(['configuration/view_all_configuration' , 'id'=>$value['id_staff']]) . '" >' . $value['fio'] .
+                                 <a  href="' . \Yii::$app->urlManager->createUrl(['configuration/view_short_configuration' , 'id'=>$value['id_staff']]) . '" >' . $value['fio'] .
                                  '</a></div></li></ul>';
 
             }

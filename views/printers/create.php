@@ -8,8 +8,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Printers */
 
 $this->title = 'Create Printers';
-$this->params['breadcrumbs'][] = ['label' => 'Printers', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="printers-create">
 

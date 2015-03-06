@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Monitors */
-
+$this->title = $staff->fio;
 ?>
 <div class="monitors-view">
 

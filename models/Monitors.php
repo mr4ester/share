@@ -25,7 +25,7 @@ class Monitors extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public $staff;
+
     public static function tableName()
     {
         return 'monitors';
