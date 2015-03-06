@@ -1,14 +1,22 @@
 <?php
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
 ?>
 
-<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data',
-'class'=>'form-inline ']]) ?>
+<?php $form = ActiveForm::begin([
+    'id' => 'active-form',
+    'options' => [
+        'class' => 'form-horizontal col-lg-4',
+        'enctype' => 'multipart/form-data'
+    ],
+]); ?>
 
+<?=$form->field($model, 'staff')->dropDownList( $listData,  ['prompt'=>'Выберите сотрудника'])->label('Сотрудники') ?>
 <?= $form->field($model, 'file')->fileInput()->label('Загрузите файл конфигурации') ?>
 
-<button class= 'btn btn-primary'>Отправить</button>
+<div class="form-group">
+    <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
+</div>
     <?php ActiveForm::end() ?>
 

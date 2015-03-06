@@ -69,13 +69,13 @@ class UploadController extends Controller
         $model = new UploadForm();
         $session = new Session();
 
+        if (Yii::$app->request->isPost) { //если пришел post запрос, заполняем модель
+            $model->file = UploadedFile::getInstance($model, 'file'); //добовляем файл в модель
+           $model->staff = $_POST['UploadForm']['staff']; // добовляем сотрудника в модель
 
-        if (Yii::$app->request->isPost) {
-            $model->file = UploadedFile::getInstance($model, 'file');
 
 
-            if ($model->file && $model->validate()) {
-
+            if ($model->file && $model->validate()) { 
 
                 $file = fopen($model->file->tempName, 'r');
                 $count = 0;
@@ -123,19 +123,22 @@ class UploadController extends Controller
 
 
                 }
+
                 $session->open();
                 $session['config'] = $array;
                 $session['memory'] = $mem;
 
-
-                return $this->redirect(['upload/monitors']);
+                return $this->redirect(['upload/monitors', 'id'=>$_POST['UploadForm']['staff']]);
 
             }
         }
 
+        $staff = Staff::find()->all();
+        $listData = ArrayHelper::map($staff, 'id_staff', 'fio');// выбирает из масиива ключ-значение
 
         return $this->render('upload', [
             'model' => $model,
+            'listData' => $listData,
         ]);
 
     }
@@ -145,22 +148,22 @@ class UploadController extends Controller
         $model = new Monitors();
         $session = new Session();
 
+
         if ($array = Yii::$app->request->post()) {
-            $id_staff = ArrayHelper::remove($array['Monitors'], 'staff');
+
+           // $id_staff = ArrayHelper::remove($array['Monitors'], 'staff');
             $model->load($array);
             $model->save();
             $key = $model->getPrimaryKey(); //получаем последний id конфигурации
-            $updateStaff = Staff::findOne($id_staff); // делаем запрос к таблице сотрудники, с id выбранным в форме
+            $updateStaff = Staff::findOne(Yii::$app->request->get('id')); // делаем запрос к таблице сотрудники, с id выбранным в форме
             $updateStaff->id_monitor = $key;// добавляем id конфигурации к выбранному сотруднику
             $updateStaff->save(); // и обновляем запись в базе данных
-            return $this->redirect(['upload/configuration', 'id' => $id_staff]);
+            return $this->redirect(['upload/configuration', 'id' => Yii::$app->request->get('id')]);
         }
 
-        $staff = Staff::find()->all();
-        $listData = ArrayHelper::map($staff, 'id_staff', 'fio');// выбирает из масиива ключ-значение
+
 
         $model->attributes = [      //заполняем атрибуты модели данными из массива
-            'staff'=>$listData,
             'id_monitor' => '',
             'invent_num_monitor_1' => '',
             'invent_num_monitor_2' => '',
@@ -173,7 +176,7 @@ class UploadController extends Controller
 
         return $this->render('/monitors/create', [
             'model' => $model,
-            'listData' => $listData,
+
         ]);
 
     }

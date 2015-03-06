@@ -13,14 +13,16 @@ class UploadForm extends Model
      * @var UploadedFile file attribute
      */
     public $file;
-    public $temp;
-    public $contents;
+    public $staff;
     /**
      * @return array the validation rules.
      */
     public function rules()
     {
         return [
+            [['staff'], 'integer' ],
+            [['staff'], 'required', 'message'=>'Вы не выбрали сотрудника!' ],
+            [['file'], 'required', 'message'=>'Вы не загрузили файл!' ],
             [['file'], 'file',],
         ];
     }
