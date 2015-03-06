@@ -160,7 +160,7 @@ class UploadController extends Controller
         $listData = ArrayHelper::map($staff, 'id_staff', 'fio');// выбирает из масиива ключ-значение
 
         $model->attributes = [      //заполняем атрибуты модели данными из массива
-
+            'staff'=>$listData,
             'id_monitor' => '',
             'invent_num_monitor_1' => '',
             'invent_num_monitor_2' => '',
@@ -252,22 +252,20 @@ class UploadController extends Controller
             return $this->redirect(Yii::$app->homeUrl, 302);
         }
 
+        /*
+         * для того чтоб создать список из принтеров напишем цикл перебора массива в другой массив
+         */
 
-        $model->attributes = [
-            'print_1' => $session['config']['принтер1'],
-            'print_2' => $session['config']['принтер2'],
-            'print_3' => $session['config']['принтер3'],
-            'print_4' => $session['config']['принтер4'],
-            'print_5' => $session['config']['принтер5'],
-            'print_6' => $session['config']['принтер6'],
-            'print_7' => $session['config']['принтер7'],
-            'print_8' => $session['config']['принтер8'],
-            'print_9' => $session['config']['принтер9'],
-            'print_10' => $session['config']['принтер10'],
-        ];
+        foreach ($session['config'] as $key=>$value) {
+
+            if (preg_match("/принтер[0-9]/",$key)){ //если удовлетворяет регулярному выражению 'принтер-любое число'
+                $listData[$value]=$value; //ложим в массив значение получается $listData['название принтера']=название принтера
+            }
+            }
 
         return $this->render('/printers/create', [
-            'model' => $model
+            'model' => $model,
+            'listData' => $listData,
         ]);
     }
 
