@@ -19,7 +19,7 @@ class SearchPrinters extends Printers
     {
         return [
             [['id_printer'], 'integer'],
-            [['invent_num_printer_1', 'invent_num_printer_2', 'print_1', 'print_2', 'print_3', 'print_4', 'print_5', 'print_6', 'print_7', 'print_8', 'print_9', 'print_10', 'date_1', 'date_2', 'old_staff_1', 'old_staff_2'], 'safe'],
+            [['invent_num_printer_1', 'invent_num_printer_2', 'invent_num_printer_3', 'invent_num_printer_4', 'invent_num_printer_5', 'print_1', 'print_2', 'print_3', 'print_4', 'print_5', 'date_1', 'date_2', 'date_3', 'date_4', 'date_5', 'old_staff_1', 'old_staff_2', 'old_staff_3', 'old_staff_4', 'old_staff_5'], 'safe'],
         ];
     }
 
@@ -61,20 +61,24 @@ class SearchPrinters extends Printers
 
         $query->andFilterWhere(['like', 'invent_num_printer_1', $this->invent_num_printer_1])
             ->andFilterWhere(['like', 'invent_num_printer_2', $this->invent_num_printer_2])
+            ->andFilterWhere(['like', 'invent_num_printer_3', $this->invent_num_printer_3])
+            ->andFilterWhere(['like', 'invent_num_printer_4', $this->invent_num_printer_4])
+            ->andFilterWhere(['like', 'invent_num_printer_5', $this->invent_num_printer_5])
             ->andFilterWhere(['like', 'print_1', $this->print_1])
             ->andFilterWhere(['like', 'print_2', $this->print_2])
             ->andFilterWhere(['like', 'print_3', $this->print_3])
             ->andFilterWhere(['like', 'print_4', $this->print_4])
             ->andFilterWhere(['like', 'print_5', $this->print_5])
-            ->andFilterWhere(['like', 'print_6', $this->print_6])
-            ->andFilterWhere(['like', 'print_7', $this->print_7])
-            ->andFilterWhere(['like', 'print_8', $this->print_8])
-            ->andFilterWhere(['like', 'print_9', $this->print_9])
-            ->andFilterWhere(['like', 'print_10', $this->print_10])
             ->andFilterWhere(['like', 'date_1', $this->date_1])
             ->andFilterWhere(['like', 'date_2', $this->date_2])
+            ->andFilterWhere(['like', 'date_3', $this->date_3])
+            ->andFilterWhere(['like', 'date_4', $this->date_4])
+            ->andFilterWhere(['like', 'date_5', $this->date_5])
             ->andFilterWhere(['like', 'old_staff_1', $this->old_staff_1])
-            ->andFilterWhere(['like', 'old_staff_2', $this->old_staff_2]);
+            ->andFilterWhere(['like', 'old_staff_2', $this->old_staff_2])
+            ->andFilterWhere(['like', 'old_staff_3', $this->old_staff_3])
+            ->andFilterWhere(['like', 'old_staff_4', $this->old_staff_4])
+            ->andFilterWhere(['like', 'old_staff_5', $this->old_staff_5]);
 
         return $dataProvider;
     }
