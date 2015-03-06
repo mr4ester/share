@@ -29,7 +29,7 @@ use yii\jui\DatePicker;
     <?= $form->field($model, 'staff')->listBox(
         $listData,
         array('prompt' => '', 'size' => 1 )
-    )->label('Выберите сотрудника'); ?>
+    ); ?>
 
     <?= $form->field($model, 'invent_num_monitor_1')->textInput() ?>
 
