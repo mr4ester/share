@@ -17,13 +17,15 @@ use Yii;
  * @property string $old_staff_1
  * @property string $old_staff_2
  *
- * @property Staff[] $staff
+ * @property string $staff
  */
+
 class Monitors extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
+    public $staff;
     public static function tableName()
     {
         return 'monitors';
@@ -54,6 +56,7 @@ class Monitors extends \yii\db\ActiveRecord
             'date_2' => 'Дата поступления монитора - 2',
             'old_staff_1' => 'Old Staff 1',
             'old_staff_2' => 'Old Staff 2',
+            'staff'=>'Выберите сотрудника',
         ];
     }
 
