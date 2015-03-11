@@ -6,9 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Configuration */
 
 $this->title = 'Изменение конфигурации: ';
-$this->params['breadcrumbs'][] = ['label' => 'Configurations', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id_configuration, 'url' => ['view', 'id' => $model->id_configuration]];
-$this->params['breadcrumbs'][] = 'Update';
+
 ?>
 <div class="configuration-update">
 

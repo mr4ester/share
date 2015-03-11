@@ -8,8 +8,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Monitors */
 
 $this->title = 'Добавление мониторов';
-$this->params['breadcrumbs'][] = ['label' => 'Monitors', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="monitors-create">
 

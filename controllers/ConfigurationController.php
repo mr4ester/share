@@ -120,6 +120,10 @@ class ConfigurationController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_configuration]);
         } else {
+            $brief=BriefConfiguration::find()->where(['id_configuration' => $id])->one();
+            $model->attributes=[
+                'title'=>$brief['title'],
+            ];
             return $this->render('update', [
                 'model' => $model,
             ]);

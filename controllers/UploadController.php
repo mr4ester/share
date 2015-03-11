@@ -75,7 +75,7 @@ class UploadController extends Controller
 
 
 
-            if ($model->file && $model->validate()) { 
+            if ($model->file && $model->validate()) {
 
                 $file = fopen($model->file->tempName, 'r');
                 $count = 0;
@@ -252,6 +252,7 @@ class UploadController extends Controller
             $updateStaff = Staff::findOne(Yii::$app->request->get('id')); // делаем запрос к таблице сотрудники, с id выбранным в форме
             $updateStaff->id_printer = $key;// добавляем id конфигурации к выбранному сотруднику
             $updateStaff->save(); // и обновляем запись в базе данных
+            $session->destroy(); // уничтожаем сессию
             return $this->redirect(Yii::$app->homeUrl, 302);
         }
 

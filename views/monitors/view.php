@@ -26,8 +26,6 @@ use yii\widgets\DetailView;
                             'monitor_2',
                             'date_1',
                             'date_2',
-                            'old_staff_1',
-                            'old_staff_2',
                         ],
                     ]) ?>
                 </div>

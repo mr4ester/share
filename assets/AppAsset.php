@@ -20,10 +20,12 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/tree.css',
-        'simple-sidebar.css',
+        'css/sb-admin-2.css',
+        'css/metisMenu.min.css',
     ];
     public $js = [
-        'js/tree.js',
+        'js/sb-admin-2.js',
+        'js/metisMenu.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
