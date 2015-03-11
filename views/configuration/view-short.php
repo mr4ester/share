@@ -11,7 +11,7 @@ $this->title = $staff->fio;
     <div class="col-lg-8">
     <div class="panel panel-info">
         <div class="panel-heading">
-           <b><i class="fa fa-bell fa-fw">Карточка сотрудника</i></b>
+           <b><i class="">Карточка сотрудника</i></b>
         </div>
         <div class="panel-body">
             <div class="list-group">
@@ -75,7 +75,7 @@ $this->title = $staff->fio;
     <div class="col-lg-4">
         <div class="panel panel-info ">
             <div class="panel-heading">
-                <b> <i class="fa fa-bell fa-fw">QR code конфигурации</i></b>
+                <b> <i class=" ">  QR code конфигурации</i></b>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">

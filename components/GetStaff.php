@@ -21,29 +21,25 @@ class GetStaff extends Widget
         $model = new Staff();
         $this->department = Department::find()->asArray()->all();
         //$listData = ArrayHelper::map($this->staff,'id_staff', 'fio' );
-        $this->listData .= '<div onclick="tree_toggle(arguments[0])">';
         foreach ($this->department as $arr) {
-            $this->listData .= '<ul class="Container-tree">
-                                 <li class="Node IsRoot ExpandClosed">
-                                 <div class="Expand"></div>
-                                 <div class="Content">' . $arr['department'] . '</div>';
+            $this->listData .= '<li><a href="#" class="color: black"><i></i>'.
+                                $arr['department'] .
+                                '<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">';
 
             $staff = Staff::find()->where(['id_department' => $arr['id_department']])->asArray()->all();
             foreach ($staff as $value) {
 
 
-                $this->listData .= '<ul class="Container-tree">
-                                <li class="Node ExpandLeaf IsLast">
-                                <div class="Expand"></div>
-                                <div class="Content">
-                                 <a  href="' . \Yii::$app->urlManager->createUrl(['configuration/view_short_configuration' , 'id'=>$value['id_staff']]) . '" >' . $value['fio'] .
-                                 '</a></div></li></ul>';
+                $this->listData .= '<li><a class="color: black" href="' . \Yii::$app->urlManager->createUrl(['configuration/view_short_configuration' , 'id'=>$value['id_staff']]) . '" ><i class="fa fa-caret-right"></i>'.' ' . $value['fio'] .
+                                    '</a></li>';
+
 
             }
-            $this->listData .= '</li></ul>';
+            $this->listData .= '</ul></li>';
 
         }
-        $this->listData .= '</div>';
+
 
 
     }

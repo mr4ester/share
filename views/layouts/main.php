@@ -81,32 +81,33 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
-    <div class="container-fluid ">
-        <div class="row-fluid">
-            <div class="col-md-2  ">
-                <div class="left-staff">
-                    <div class="sidebar">
-
-                    <h3 class="text-center">Сотрудники</h3>
-
+    <div class="navbar-default sidebar" role="navigation">
+        <h3 class="text-center" >Сотрудники</h3>
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
 
                 <?=GetStaff::widget()?>
 
+            </ul>
 
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-10 ">
-                <div class="content">
+
+
+
+        </div>
+        <!-- /.sidebar-collapse -->
+    </div>
+
+    <div id="page-wrapper">
+
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
 
                 <?= $content ?>
-                    </div>
+
             </div>
-        </div>
-    </div>
+
+
 </div>
 
 <footer class="footer">

@@ -22,6 +22,7 @@ class AppAsset extends AssetBundle
         'css/tree.css',
         'css/sb-admin-2.css',
         'css/metisMenu.min.css',
+        'css/font/css/font-awesome.css'
     ];
     public $js = [
         'js/sb-admin-2.js',
