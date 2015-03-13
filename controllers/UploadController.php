@@ -164,13 +164,8 @@ class UploadController extends Controller
 
 
         $model->attributes = [      //заполняем атрибуты модели данными из массива
-            'id_monitor' => '',
-            'invent_num_monitor_1' => '',
-            'invent_num_monitor_2' => '',
             'monitor_1' => $session['config']['монитор1'],
             'monitor_2' => $session['config']['монитор2'],
-            'date_1' => '',
-            'date_2' => '',
             'old_staff_1' => '{0}',
             'old_staff_2' => '{0}',];
 

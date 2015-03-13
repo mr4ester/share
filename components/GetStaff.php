@@ -22,7 +22,7 @@ class GetStaff extends Widget
         $this->department = Department::find()->asArray()->all();
         //$listData = ArrayHelper::map($this->staff,'id_staff', 'fio' );
         foreach ($this->department as $arr) {
-            $this->listData .= '<li><a href="#" class="color: black"><i></i>'.
+            $this->listData .= '<li><a href="#" style="color: #555555"><i></i>'.
                                 $arr['department'] .
                                 '<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">';
@@ -31,8 +31,8 @@ class GetStaff extends Widget
             foreach ($staff as $value) {
 
 
-                $this->listData .= '<li><a class="color: black" href="' . \Yii::$app->urlManager->createUrl(['configuration/view_short_configuration' , 'id'=>$value['id_staff']]) . '" ><i class="fa fa-caret-right"></i>'.' ' . $value['fio'] .
-                                    '</a></li>';
+                    $this->listData .= '<li><a href="' . \Yii::$app->urlManager->createUrl(['configuration/view_short_configuration', 'id' => $value['id_staff']]) . '" ><i class="fa fa-caret-right"></i>' . ' ' . $value['fio'] .
+                        '</a></li>';
 
 
             }

@@ -6,6 +6,7 @@ use yii\bootstrap\ActiveForm;
 use yii\jui\DatePicker;
 use yii\bootstrap\Alert;
 
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Configuration */
 /* @var $form yii\widgets\ActiveForm */

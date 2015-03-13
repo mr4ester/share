@@ -12,7 +12,7 @@ use yii\widgets\DetailView;
 
         <div class="panel panel-info">
             <div class="panel-heading">
-               <b> <i class="fa fa-bell fa-fw">Мониторы</i></b>
+               <b> <i class="fa fa-desktop"> Мониторы</i></b>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">

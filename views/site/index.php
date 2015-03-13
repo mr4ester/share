@@ -8,6 +8,78 @@ $this->title = 'PCinventory';
   <div class="site-index">
 
     <div class="body-content">
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="glyphicon glyphicon-import "></i> Приходы
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+
+                    </div>
+                    <!-- /.list-group -->
+                    <a href="#" class="btn btn-default btn-block">Все приходы</a>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="glyphicon glyphicon-export "></i> Расходы
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+
+                    </div>
+                    <!-- /.list-group -->
+                    <a href="#" class="btn btn-default btn-block">Все расходы</a>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-archive  "></i> Остаток на складе
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+
+                    </div>
+                    <!-- /.list-group -->
+                    <a href="#" class="btn btn-default btn-block">Показать остатки</a>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class=" glyphicon glyphicon-print" ></i> Заправка картриджей
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+
+                    </div>
+                    <!-- /.list-group -->
+                    <a href="#" class="btn btn-default btn-block">Все заправки</a>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
 
 
         <div class="col-lg-4">
@@ -56,76 +128,7 @@ $this->title = 'PCinventory';
             </div>
             <!-- /.panel -->
         </div>
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bell fa-fw"></i> Остаток на складе
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="list-group">
 
-                    </div>
-                    <!-- /.list-group -->
-                    <a href="#" class="btn btn-default btn-block">Показать все уведомления</a>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-        </div>
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bell fa-fw"></i> Приходы
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="list-group">
-
-                    </div>
-                    <!-- /.list-group -->
-                    <a href="#" class="btn btn-default btn-block">Показать все уведомления</a>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-        </div>
-
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bell fa-fw"></i> Расходы
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="list-group">
-
-                    </div>
-                    <!-- /.list-group -->
-                    <a href="#" class="btn btn-default btn-block">Показать все уведомления</a>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-        </div>
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bell fa-fw"></i> Заправка картриджей
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="list-group">
-
-                    </div>
-                    <!-- /.list-group -->
-                    <a href="#" class="btn btn-default btn-block">Показать все</a>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-        </div>
-    </div>
 
 
 
