@@ -31,26 +31,42 @@ $this->title = $staff->fio;
                         <td>ФИО</td>
                         <td><?= $staff->fio ?></td>
                     </tr>
+                    <?php if( is_object($monitors)): // проверяем является ли переменная объектом, если нет значит этой конфигурации нет?>
                     <tr>
                         <td>Монитор</td>
                         <td><?=$monitors->monitor_1 ?></td>
                         <td><?=$monitors->date_1 ?></td>
                         <td><?=$monitors->invent_num_monitor_1 ?></td>
                     </tr>
+
+                        <?php if( $monitors->monitor_2): // проверяем есть ли втророй монитор, если есть выводим?>
+                            <tr>
+                                <td>Монитор 2</td>
+                                <td><?=$monitors->monitor_2 ?></td>
+                                <td><?=$monitors->date_2 ?></td>
+                                <td><?=$monitors->invent_num_monitor_2 ?></td>
+                            </tr>
+                        <?php endif?>
+                    <?php endif?>
+
+
+                    <?php if(is_object($brief_conf)) :?>
                     <tr>
                         <td>Конфигурация</td>
                         <td><?= $brief_conf->title ?></td>
                         <td><?=$configuration->date ?></td>
                         <td><?=$configuration->invent_num_system ?></td>
                     </tr>
+                    <?php endif?>
 
-
-                        <?php for($i=1; $i<=5; $i++){ //для того чтоб не выводить пустые строки принтеров запустим цикл
-                            if(!empty($printers['print_'.$i])){//проверим не пустой ли ключ массива если нет, выводим
-                                echo '<tr><td>Принтер '.$i .'</td>'; //выводим заголовок
-                                echo '<td>'.$printers['print_'.$i].'</td>'; //название принтера
-                                echo '<td>'.$printers['date_'.$i].'</td>'; //дата поступления
-                                echo  '<td>'.$printers['invent_num_printer_'.$i].'</td></tr>'; //инвентарный номер
+                        <?php if(is_object($printers)) {
+                            for ($i = 1; $i <= 5; $i++) { //для того чтоб не выводить пустые строки принтеров запустим цикл
+                                if (!empty($printers['print_' . $i])) {//проверим не пустой ли ключ массива если нет, выводим
+                                    echo '<tr><td>Принтер ' . $i . '</td>'; //выводим заголовок
+                                    echo '<td>' . $printers['print_' . $i] . '</td>'; //название принтера
+                                    echo '<td>' . $printers['date_' . $i] . '</td>'; //дата поступления
+                                    echo '<td>' . $printers['invent_num_printer_' . $i] . '</td></tr>'; //инвентарный номер
+                                }
                             }
                         }?>
 
