@@ -109,7 +109,7 @@ use yii\bootstrap\Alert;
             </div>
         </div>
     </div>
-    <div class="form-group">
+    <div class="btn-group">
 
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 

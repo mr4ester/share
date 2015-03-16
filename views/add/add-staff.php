@@ -32,7 +32,7 @@ use yii\bootstrap\Alert;
 
 
 
-        <div class="form-group">
+<div class="btn-group  ">
             <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary ']) ?>
         </div>
 

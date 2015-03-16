@@ -66,7 +66,7 @@ use yii\bootstrap\Alert;
     <?= $form->field($model,'date')->widget(DatePicker::className(),['language'=>'ru','dateFormat' => 'dd-MM-yyyy',]) ?>
 
 
-    <div class="form-group">
+    <div class="btn-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
