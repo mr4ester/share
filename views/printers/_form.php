@@ -45,7 +45,7 @@ use yii\bootstrap\Alert;
 
                 <?= $form->field($model, 'invent_num_printer_1')->textInput() ?>
 
-                <?= $form->field($model, 'date_1')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd-MM-yyyy',]) ?>
+                <?= $form->field($model, 'date_1')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd.MM.yyyy',]) ?>
 
 
             </div>
@@ -59,7 +59,7 @@ use yii\bootstrap\Alert;
 
                 <?= $form->field($model, 'invent_num_printer_2')->textInput() ?>
 
-                <?= $form->field($model, 'date_2')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd-MM-yyyy',]) ?>
+                <?= $form->field($model, 'date_2')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd.MM.yyyy',]) ?>
 
 
             </div>
@@ -73,7 +73,7 @@ use yii\bootstrap\Alert;
 
                 <?= $form->field($model, 'invent_num_printer_3')->textInput() ?>
 
-                <?= $form->field($model, 'date_3')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd-MM-yyyy',]) ?>
+                <?= $form->field($model, 'date_3')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd.MM.yyyy',]) ?>
 
 
 
@@ -88,7 +88,7 @@ use yii\bootstrap\Alert;
 
                 <?= $form->field($model, 'invent_num_printer_4')->textInput() ?>
 
-                <?= $form->field($model, 'date_4')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd-MM-yyyy',]) ?>
+                <?= $form->field($model, 'date_4')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd.MM.yyyy',]) ?>
 
 
 
@@ -102,7 +102,7 @@ use yii\bootstrap\Alert;
 
                 <?= $form->field($model, 'invent_num_printer_5')->textInput() ?>
 
-                <?= $form->field($model, 'date_5')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd-MM-yyyy',]) ?>
+                <?= $form->field($model, 'date_5')->widget(DatePicker::className(), ['language' => 'ru', 'dateFormat' => 'dd.MM.yyyy',]) ?>
 
 
 

@@ -19,7 +19,6 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        'css/tree.css',
         'css/sb-admin-2.css',
         'css/metisMenu.min.css',
         'css/font/css/font-awesome.css'

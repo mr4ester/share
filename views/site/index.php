@@ -1,5 +1,6 @@
 <?php
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 $this->title = 'PCinventory';

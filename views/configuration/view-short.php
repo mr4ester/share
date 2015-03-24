@@ -8,7 +8,7 @@ $this->title = $staff->fio;
 ?>
 <div class="monitors-view">
 
-    <div class="col-lg-8">
+    <div class="col-lg-12">
     <div class="panel panel-info">
         <div class="panel-heading">
            <b><i class="">Карточка сотрудника</i></b>
@@ -78,7 +78,14 @@ $this->title = $staff->fio;
             <!-- /.list-group -->
             <p>
                 <?= Html::a('Посмотреть полную конфигурацию', ['view_all_configuration', 'id' => $staff->id_staff], ['class' => 'btn btn-success']) ?>
-                <?= Html::a('Печать карточки сотрудника', ['view_all_configuration', 'id' => $staff->id_staff], ['class' => 'btn btn-primary']) ?>
+                <?= Html::a('Печать карточки сотрудника', ['/print/card', 'id' => $staff->id_staff, 'type'=>'card'], [
+                    'class' => 'btn btn-primary',
+                    'target'=>'_blank',
+                    ]) ?>
+                <?= Html::a('Печать QR code', ['/print/card', 'id' => $staff->id_staff], [
+                    'class' => 'btn btn-primary',
+                    'target'=>'_blank',
+                ]) ?>
             </p>
         </div>
         <!-- /.panel-body -->
@@ -88,25 +95,7 @@ $this->title = $staff->fio;
 
 
 
-    <div class="col-lg-4">
-        <div class="panel panel-info ">
-            <div class="panel-heading">
-                <b> <i class=" ">  QR code конфигурации</i></b>
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-                <div class="list-group">
-                    <img src="../web/img/qr-code.gif" alt="" width="200" height="200" align="center" >
-                </div>
-                <!-- /.list-group -->
 
-                <a href="#" class="btn btn-primary btn-block">Печать QR code</a>
-
-            </div>
-            <!-- /.panel-body -->
-        </div>
-        <!-- /.panel -->
-    </div>
 
 
 </div>

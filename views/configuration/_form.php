@@ -63,7 +63,7 @@ use yii\bootstrap\Alert;
 
     <?= $form->field($model, 'title')->textInput() ?>
 
-    <?= $form->field($model,'date')->widget(DatePicker::className(),['language'=>'ru','dateFormat' => 'dd-MM-yyyy',]) ?>
+    <?= $form->field($model,'date')->widget(DatePicker::className(),['language'=>'ru','dateFormat' => 'dd.MM.yyyy',]) ?>
 
 
     <div class="btn-group">
